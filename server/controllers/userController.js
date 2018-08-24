@@ -12,7 +12,7 @@ const signup = (req, res) => {
     } else {
       db.User.create(req.body, function(err, user) {
         if (err) {
-          console.log("error", err);
+          console.log("error from user create within signup:", err);
         }
         res.status(200).json(user);
       });
@@ -26,7 +26,7 @@ const login = (req, res) => {
     (err, founderUser) => {
       if (err) {
         return err;
-        console.log(err);
+        console.log("error from login findOne:", err);
       }
       if (founderUser) {
         console.log("In Login If statement:", founderUser);
@@ -38,7 +38,22 @@ const login = (req, res) => {
   );
 };
 
+function updateProfile(req, res) {
+  db.User.findOne({ username: req.params.user_id }, function(err, foundUser) {
+    if (err) {
+      console.log("userController.update error", err);
+    }
+    foundUser.username = req.body.username;
+    foundUser.profile_pic = req.body.profile_pic;
+    foundUser.email = req.body.email;
+    foundUser.save(function(err, savedUser) {
+      res.status(200).json(savedUser);
+    });
+  });
+}
+
 module.exports = {
   signup: signup,
-  login: login
+  login: login,
+  updateProfile: updateProfile
 };
