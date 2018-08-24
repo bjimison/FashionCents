@@ -31,8 +31,28 @@ const show = (req, res) => {
   });
 };
 
+const getByCategory = (req, res) => {
+  db.Post.findOne({ category: req.params.category }, (err, posts) => {
+    if (err) {
+      console.log("error from getByCategory in post contoller:", err);
+    }
+    res.status(200).json(posts);
+  });
+};
+
+const getByDate = (req, res) => {
+  db.Post.find({ date: req.params.date }, (err, posts) => {
+    if (err) {
+      console.log("error from getByDate in post contoller:", err);
+    }
+    res.status(200).json(posts);
+  });
+};
+
 module.exports = {
   create: create,
   index: index,
-  show: show
+  show: show,
+  getByCategory: getByCategory,
+  getByDate: getByDate
 };

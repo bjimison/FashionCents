@@ -10,7 +10,8 @@ let userSchema = new Schema({
   upvotes: Number,
   upvotes_required: Number,
   username: String,
-  for_sale: Boolean
+  for_sale: Boolean,
+  date: String
 });
 
 let Post = mongoose.model("Post", postSchema);
