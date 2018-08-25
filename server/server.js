@@ -1,9 +1,8 @@
-// require Express, create an Express app
-import cors from "cors";
-import express from "express";
-import bodyParser from "body-parser";
-
+const cors = require("cors");
+const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+const controllers = require("./controllers");
 
 app.use(cors());
 
@@ -15,14 +14,16 @@ app.use(bodyParser.json());
 // POST
 app.post("/api/users/login", controllers.user.login);
 app.post("/api/users/signup", controllers.user.signup);
-app.post("/api/users/:user_id/update", controllers.user.updateProfile);
-app.post("/api/users/:user_id/post", controllers.post.create);
+app.post("/api/users/:username/update", controllers.user.updateProfile);
+app.post("/api/users/:username/post", controllers.post.create);
 
 // GET
+app.get("/api/users/:username/profile", controllers.user.profile);
 app.get("/api/posts", controllers.post.index);
 app.get("/api/posts/:title", controllers.post.show);
 app.get("/api/posts/:category", controllers.post.getByCategory);
 app.get("/api/posts/:date", controllers.post.getByDate);
+app.get("/api/posts/createpost", controllers.post.create);
 
 // PUT
 

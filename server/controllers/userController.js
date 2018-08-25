@@ -1,4 +1,4 @@
-import db from "../models";
+const db = require("../models");
 
 // POST /api/user
 const signup = (req, res) => {
@@ -38,8 +38,8 @@ const login = (req, res) => {
   );
 };
 
-function updateProfile(req, res) {
-  db.User.findOne({ username: req.params.user_id }, function(err, foundUser) {
+const updateProfile = (req, res) => {
+  db.User.findOne({ username: req.params.username }, (err, foundUser) => {
     if (err) {
       console.log("userController.update error", err);
     }
@@ -50,7 +50,16 @@ function updateProfile(req, res) {
       res.status(200).json(savedUser);
     });
   });
-}
+};
+
+const profile = (req, res) => {
+  db.User.findOne({ username: req.params.username }, (err, foundUser) => {
+    if (err) {
+      console.log("Error from profile in user controller:", err);
+    }
+    res.status(200).json(foundUser);
+  });
+};
 
 module.exports = {
   signup: signup,

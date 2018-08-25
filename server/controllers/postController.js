@@ -1,4 +1,4 @@
-import db from "../models";
+const db = require("../models");
 
 const create = (req, res) => {
   db.Post.create(req.body, (err, newPost) => {

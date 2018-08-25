@@ -1,6 +1,6 @@
 import axios from "axios";
 
-class login {
+class loginModel {
   static login(username, password) {
     let request = axios.post("http://localhost:4000/api/users/login", {
       username: username,
@@ -10,4 +10,4 @@ class login {
   }
 }
 
-export default login;
+export default loginModel;

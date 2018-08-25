@@ -1,8 +1,8 @@
 // post schema
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-let userSchema = new Schema({
+let postSchema = new Schema({
   title: String,
   category: String,
   img: String,

@@ -3,3 +3,64 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/* ############################# NAV ############################### */
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav {
+  background-color: blue;
+  height: 80px;
+}
+
+.nav-item {
+  margin: 1rem 1rem;
+  list-style-type: none;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-link:hover {
+  color: gray;
+}
+
+#search {
+  align-self: center;
+  text-align: center;
+}
+
+.homepage-container {
+  width: 80%;
+  height: 1000px;
+  border: 1px solid black;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  margin: 2rem auto;
+}
+
+.post {
+  height: 20%;
+  width: 92%;
+  border: 1px solid black;
+  margin: 2rem auto;
+}
+
+/* ####################### Links ####################### */
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  color: gray;
+}

@@ -1,5 +1,5 @@
 // user schema
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let userSchema = new Schema({
