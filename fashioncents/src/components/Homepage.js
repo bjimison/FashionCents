@@ -9,16 +9,14 @@ class Homepage extends Component {
       <div>
         <h1>Homepage</h1>
         <div id="search">
-          <input type="text" placeholder="search" />
+          <input type="text" placeholder=" Search" />
           <button>
             <Link className="link" to="CreatePost">
               Post Your Creation
             </Link>
           </button>
         </div>
-        <div className="homepage-container">
-          <PostContainer />
-        </div>
+        <PostContainer />
       </div>
     );
   }

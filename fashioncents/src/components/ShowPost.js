@@ -1,14 +1,26 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
 
-class ShowPost extends Component {
+class Post extends Component {
   render() {
     return (
-      <div>
-        <h1>Show Post Page</h1>
+      <div className="post-container">
+        <div className="post-detail">
+          <h3 id="title">Post 1</h3>
+          <h5 id="category">Category</h5>
+        </div>
+        <div className="post-detail">
+          <h5 id="creator">Created By</h5>
+          <h5 id="upvotes">Upvotes needed for production</h5>
+        </div>
+        <div className="post-description">
+          <img src="#" />
+          <p>Description</p>
+          <i>Icon</i>
+        </div>
       </div>
     );
   }
 }
 
-export default ShowPost;
+export default Post;

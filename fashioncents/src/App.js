@@ -6,6 +6,7 @@ import Profile from "./components/Profile";
 import Homepage from "./components/Homepage";
 import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
+import PostContainer from "./containers/PostContainer";
 
 class App extends Component {
   state = {
@@ -93,26 +94,14 @@ class App extends Component {
           </div>
         </nav>
         <Switch>
-          {/* <Route path="/login" component={Login} setAuth={this.setAuth}/> */}
           <Route
             path="/login"
             render={props => <Login {...props} setAuth={this.setAuth} />}
           />
-          {/* <Route path="/signup" component={Signup} /> */}
           <Route
             path="/signup"
             render={props => <Signup {...props} setAuth={this.setAuth} />}
           />
-          {/*} <Route
-            path="/profile"
-            render={props => (
-              <Profile
-                {...props}
-                setAuth={this.state.auth}
-                username={this.state.username}
-              />
-            )}
-          />*/}
           <Route path="/createpost" component={CreatePost} />
           <Route path="/profile" component={Profile} />
           <Route path="/showpost" component={ShowPost} />
