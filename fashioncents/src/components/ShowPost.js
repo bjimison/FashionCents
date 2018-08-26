@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
+import Shirt from "../images/shirt.jpg";
 
 class Post extends Component {
   render() {
@@ -14,9 +15,20 @@ class Post extends Component {
           <h5 id="upvotes">Upvotes needed for production</h5>
         </div>
         <div className="post-description">
-          <img src="#" />
-          <p>Description</p>
-          <i>Icon</i>
+          <img src={Shirt} />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
+            tristique sem augue, et auctor nisl luctus ut. Nam blandit sit amet
+            tellus ut rhoncus. Donec ut sollicitudin metus. Suspendisse laoreet
+            vulputate sapien, in dapibus tellus pharetra hendrerit. Ut non
+            imperdiet eros. Aenean porttitor ullamcorper imperdiet. Vivamus vel
+            interdum ipsum, eu ullamcorper libero. Class aptent taciti sociosqu
+            ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc
+            mi enim, pulvinar vel erat sit amet, laoreet gravida eros.
+          </p>
+          <div className="up-arrow">
+            <i class="fas fa-sort-up" />
+          </div>
         </div>
       </div>
     );

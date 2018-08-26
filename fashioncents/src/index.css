@@ -38,7 +38,7 @@ nav {
 
 .main-container {
   width: 80%;
-  height: 1000px;
+  /* height: 1000px; */
   border: 1px solid black;
   border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -51,6 +51,13 @@ nav {
 /* ######################## HOMEPAGE ################################# */
 .homepage-post {
   background: lightgray;
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage-post img {
+  height: 90px;
+  width: 110px;
 }
 
 #search input {
@@ -89,13 +96,6 @@ nav {
   display: flex;
   flex-direction: column;
   width: 80%;
-  height: 1000px;
-  border: 1px solid black;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
   margin: 2rem auto;
 }
 
@@ -106,38 +106,57 @@ nav {
 }
 
 .post-description {
-  height: 200px;
-  width: 500px;
-  border: 1px solid black;
-  margin: 1rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 1rem 1rem;
+}
+
+.post-description img {
+  height: 300px;
+  width: 230px;
+  position: relative;
+  margin-right: 4rem;
+}
+
+.post-description p {
+  width: 50%;
 }
 
 #title {
   display: block;
-  border: 1px solid black;
   width: 40%;
   height: 50px;
 }
 
 #category {
   display: block;
-  border: 1px solid black;
   width: 40%;
   height: 50px;
 }
 
 #creator {
   display: block;
-  border: 1px solid black;
   width: 40%;
   height: 50px;
 }
 
 #upvotes {
   display: block;
-  border: 1px solid black;
   width: 40%;
   height: 50px;
+}
+
+.fa-sort-up {
+  padding: 1rem;
+}
+
+.up-arrow {
+  border: 1px solid black;
+  height: 50px;
+  margin-left: 1rem;
+  align-self: center;
+  text-align: center;
 }
 
 /* ####################### Links ####################### */

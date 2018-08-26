@@ -18,6 +18,15 @@ class Posts extends Component {
         <div className="posts">
           <Post />
         </div>
+        <div className="posts">
+          <Post />
+        </div>
+        <div className="posts">
+          <Post />
+        </div>
+        <div className="posts">
+          <Post />
+        </div>
       </div>
     );
   }
