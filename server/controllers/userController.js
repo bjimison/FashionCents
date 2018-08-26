@@ -64,5 +64,6 @@ const profile = (req, res) => {
 module.exports = {
   signup: signup,
   login: login,
-  updateProfile: updateProfile
+  updateProfile: updateProfile,
+  profile: profile
 };

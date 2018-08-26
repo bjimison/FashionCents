@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.post("/api/users/login", controllers.user.login);
 app.post("/api/users/signup", controllers.user.signup);
 app.post("/api/users/:username/update", controllers.user.updateProfile);
-app.post("/api/users/:username/post", controllers.post.create);
+app.post("/api/posts/createpost", controllers.post.create);
 
 // GET
 app.get("/api/users/:username/profile", controllers.user.profile);
@@ -23,7 +23,6 @@ app.get("/api/posts", controllers.post.index);
 app.get("/api/posts/:title", controllers.post.show);
 app.get("/api/posts/:category", controllers.post.getByCategory);
 app.get("/api/posts/:date", controllers.post.getByDate);
-app.get("/api/posts/createpost", controllers.post.create);
 
 // PUT
 

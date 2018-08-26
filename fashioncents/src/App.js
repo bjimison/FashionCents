@@ -5,6 +5,7 @@ import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import Homepage from "./components/Homepage";
 import CreatePost from "./components/CreatePost";
+import ShowPost from "./components/ShowPost";
 
 class App extends Component {
   state = {
@@ -114,6 +115,7 @@ class App extends Component {
           />*/}
           <Route path="/createpost" component={CreatePost} />
           <Route path="/profile" component={Profile} />
+          <Route path="/showpost" component={ShowPost} />
           <Route exact path="/" component={Homepage} />
           <Route path="/*" render={() => <div>Error 404</div>} />
         </Switch>
