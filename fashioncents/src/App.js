@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, NavLink, withRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
@@ -7,6 +8,7 @@ import Homepage from "./components/Homepage";
 import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
 import PostContainer from "./containers/PostContainer";
+import { createBrowserHistory as createHistory } from "history";
 
 class App extends Component {
   state = {
@@ -14,6 +16,8 @@ class App extends Component {
     password: "",
     auth: false
   };
+
+  history = createHistory(this.props);
 
   setAuth = (username, password) => {
     this.setState({
@@ -29,8 +33,8 @@ class App extends Component {
     }
     this.setState({
       auth: false,
-      username: null,
-      password: null
+      username: "",
+      password: ""
     });
     this.props.history.push("/");
   };
@@ -46,6 +50,8 @@ class App extends Component {
   }
 
   render() {
+    let username = localStorage.getItem("username");
+
     return (
       <div className="App">
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
@@ -60,7 +66,7 @@ class App extends Component {
                 <div id="login">
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/profile">
-                      Profile
+                      Hello, {username}
                     </NavLink>
                   </li>
                   <li className="nav-item">
@@ -103,7 +109,7 @@ class App extends Component {
             render={props => <Signup {...props} setAuth={this.setAuth} />}
           />
           <Route path="/createpost" component={CreatePost} />
-          <Route path="/profile" component={Profile} />
+          <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost" component={ShowPost} />
           <Route exact path="/" component={Homepage} />
           <Route path="/*" render={() => <div>Error 404</div>} />

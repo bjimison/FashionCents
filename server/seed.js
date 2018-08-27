@@ -66,24 +66,28 @@ const post_list = [
 const user_list = [
   {
     username: "Test",
+    password: "password",
     profile_pic:
       "https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png",
     email: "test@gmail.com"
   },
   {
     username: "Test1",
+    password: "password1",
     profile_pic:
       "https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png",
     email: "Test1@gmail.com"
   },
   {
     username: "Test2",
+    password: "password2",
     profile_pic:
       "https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png",
     email: "Test2@gmail.com"
   },
   {
     username: "Test3",
+    password: "password3",
     profile_pic:
       "https://cdn2.iconfinder.com/data/icons/rcons-user/32/male-shadow-fill-circle-512.png",
     email: "Test3@gmail.com"

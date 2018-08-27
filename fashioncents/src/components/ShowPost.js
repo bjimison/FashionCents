@@ -27,7 +27,7 @@ class Post extends Component {
             mi enim, pulvinar vel erat sit amet, laoreet gravida eros.
           </p>
           <div className="up-arrow">
-            <i class="fas fa-sort-up" />
+            <i className="fas fa-sort-up" />
           </div>
         </div>
       </div>

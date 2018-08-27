@@ -24,7 +24,7 @@ class Posts extends Component {
           </button>
         </div>
         <div className="up-arrow">
-          <i class="fas fa-sort-up" />
+          <i className="fas fa-sort-up" />
         </div>
       </div>
     );
