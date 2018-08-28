@@ -43,7 +43,6 @@ nav {
 
 .main-container {
   width: 80%;
-  /* height: 1000px; */
   border: 1px solid black;
   border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -58,6 +57,7 @@ nav {
   background: lightgray;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .homepage-post img {
@@ -104,10 +104,8 @@ nav {
   margin: 2rem auto;
 }
 
-.post-detail {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+.post-item img {
+  height: 95%;
 }
 
 .post-description {
@@ -117,43 +115,41 @@ nav {
   margin: 1rem 1rem;
 }
 
-.post-description img {
-  height: 300px;
-  width: 230px;
-  position: relative;
-  margin-right: 4rem;
-}
-
 .post-description p {
   width: 50%;
 }
 
-#title {
-  display: block;
-  width: 40%;
-  height: 50px;
+.post-description-show img {
+  height: 130px;
+  width: 160px;
+  margin: 1rem 2rem;
 }
 
-#category {
-  display: block;
-  width: 40%;
-  height: 50px;
+.post-detail-show {
+  height: 3rem;
+  width: 80%;
+  margin: 1rem auto;
 }
 
-#creator {
-  display: block;
-  width: 40%;
-  height: 50px;
+.post-item {
+  border: 1px solid black;
+  margin: 1rem 1rem;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
-#upvotes {
-  display: block;
-  width: 40%;
-  height: 50px;
+.post-item-row {
+  display: flex;
+  flex-direction: row;
 }
 
 .fa-sort-up {
   padding: 1rem;
+  color: green;
+  font-size: 3rem;
 }
 
 .up-arrow {

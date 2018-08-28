@@ -17,9 +17,9 @@ class Post extends Component {
   render() {
     let posts = this.props.posts.map(post => {
       return (
-        <div>
+        <div className="post-item">
           <img src={post.img} />
-          <div>
+          <div className="post-detail">
             <p>{post.description}</p>
             <button>
               <Link className="link" to="ShowPost">

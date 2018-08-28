@@ -21,15 +21,15 @@ class Post extends Component {
   render() {
     return (
       <div className="post-container">
-        <div className="post-detail">
+        <div className="post-detail-show">
           <h3 id="title">Post 1</h3>
           <h5 id="category">Category</h5>
         </div>
-        <div className="post-detail">
+        <div className="post-detail-show">
           <h5 id="creator">Created By</h5>
           <h5 id="upvotes">Upvotes needed for production</h5>
         </div>
-        <div className="post-description">
+        <div className="post-description-show">
           <img src={Shirt} />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
