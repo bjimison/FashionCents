@@ -13,7 +13,7 @@ class Login extends Component {
         localStorage.setItem("password", res.data.password);
         console.log("RESPONSE:", res.data.username, res.data._id);
         this.props.setAuth(res.data.username, res.data.password);
-        this.props.history.push("/profile");
+        this.props.history.push("/");
       }
     );
   };

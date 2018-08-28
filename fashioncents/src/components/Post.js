@@ -2,25 +2,22 @@ import React, { Component } from "react";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import ShowPost from "./ShowPost";
 import Shirt from "../images/shirt.jpg";
+import DeletePost from "../models/deletePost";
 
 class Post extends Component {
-  // state = {
-  //   posts: [],
-  //   delete: this.props.delete,
-  //   deleted: []
-  // };
-
-  delete = () => {};
+  delete = event => {
+    console.log("post_title", event.target.value);
+    DeletePost.delete(event.target.value).then(res => {
+      this.setState({
+        deleted: this.state.deleted.push(res)
+      });
+    });
+  };
 
   render() {
     let username = localStorage.getItem("username");
     console.log("username", username, this.props.post.username);
-    // console.log(this.props.posts);
-    // let post = this.props.posts.forEach(post => {
-    //   if (post.username === username) {
-    //     return post;
-    //   }
-    // });
+
     return (
       <div className="homepage-post">
         <img src={Shirt} />
@@ -39,11 +36,16 @@ class Post extends Component {
             </Link>
           </button>
 
-          {username === this.props.post.username ? (
-            <button onClick={this.delete} value={this.props.post.title}>
+          {username === this.props.post.username
+            ? console.log(
+                "username: ",
+                username,
+                "post.username: ",
+                this.props.post.username
+              )`<button onClick={this.delete} value={this.props.post.title}>
               Delete
-            </button>
-          ) : null}
+            </button>`
+            : null}
         </div>
         <div className="up-arrow">
           <i className="fas fa-sort-up" />
