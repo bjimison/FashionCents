@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import Posts from "../components/Posts";
 import DeletePost from "../models/deletePost";
+import Model from "../models/getPosts";
 import axios from "axios";
 
 class PostContainer extends Component {

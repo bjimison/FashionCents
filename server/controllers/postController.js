@@ -4,7 +4,6 @@ const create = (req, res) => {
   db.Post.create(req.body, (err, newPost) => {
     if (err) {
       console.log("Error from create Post:", err);
-      //   ???? Redirect to empty Form ????
     }
     console.log("NEWPOST: ", newPost);
     res.json(newPost);

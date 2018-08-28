@@ -22,7 +22,6 @@ class CreatePost extends Component {
   };
 
   render() {
-    // let username = localStorage.getItem("username");
     return (
       <div>
         <h1>Create Post</h1>

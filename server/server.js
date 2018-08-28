@@ -22,7 +22,6 @@ app.get("/api/users/:username/profile", controllers.user.profile);
 app.get("/api/posts", controllers.post.index);
 // app.get("/api/posts/:title", controllers.post.show);
 // app.get("/api/posts/:category", controllers.post.getByCategory);
-// app.get("/api/posts/:date", controllers.post.getByDate);
 
 // PUT
 
