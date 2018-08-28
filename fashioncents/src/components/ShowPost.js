@@ -1,8 +1,23 @@
 import React, { Component } from "react";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import Shirt from "../images/shirt.jpg";
+import Model from "../models/deletePost";
 
 class Post extends Component {
+  state = {
+    deleted: []
+  };
+
+  handleClick = event => {
+    let title = event.target.title;
+    Model.delete(title).then(res => {
+      this.setState({
+        deleted: this.state.deleted.push(res)
+      });
+      console.log("in handle click for delete post button: ", res);
+    });
+  };
+
   render() {
     return (
       <div className="post-container">
@@ -29,6 +44,7 @@ class Post extends Component {
           <div className="up-arrow">
             <i className="fas fa-sort-up" />
           </div>
+          <button onClick={this.handleClick}>Delete</button>
         </div>
       </div>
     );

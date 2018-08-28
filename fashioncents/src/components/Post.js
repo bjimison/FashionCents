@@ -3,8 +3,24 @@ import { Switch, Route, Link, withRouter } from "react-router-dom";
 import ShowPost from "./ShowPost";
 import Shirt from "../images/shirt.jpg";
 
-class Posts extends Component {
+class Post extends Component {
+  // state = {
+  //   posts: [],
+  //   delete: this.props.delete,
+  //   deleted: []
+  // };
+
+  delete = () => {};
+
   render() {
+    let username = localStorage.getItem("username");
+    console.log("username", username, this.props.post.username);
+    // console.log(this.props.posts);
+    // let post = this.props.posts.forEach(post => {
+    //   if (post.username === username) {
+    //     return post;
+    //   }
+    // });
     return (
       <div className="homepage-post">
         <img src={Shirt} />
@@ -22,6 +38,12 @@ class Posts extends Component {
               View Post
             </Link>
           </button>
+
+          {username === this.props.post.username ? (
+            <button onClick={this.delete} value={this.props.post.title}>
+              Delete
+            </button>
+          ) : null}
         </div>
         <div className="up-arrow">
           <i className="fas fa-sort-up" />
@@ -31,4 +53,4 @@ class Posts extends Component {
   }
 }
 
-export default Posts;
+export default Post;

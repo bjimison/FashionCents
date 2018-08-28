@@ -20,13 +20,14 @@ app.post("/api/posts/createpost", controllers.post.create);
 // GET
 app.get("/api/users/:username/profile", controllers.user.profile);
 app.get("/api/posts", controllers.post.index);
-app.get("/api/posts/:title", controllers.post.show);
-app.get("/api/posts/:category", controllers.post.getByCategory);
-app.get("/api/posts/:date", controllers.post.getByDate);
+// app.get("/api/posts/:title", controllers.post.show);
+// app.get("/api/posts/:category", controllers.post.getByCategory);
+// app.get("/api/posts/:date", controllers.post.getByDate);
 
 // PUT
 
 // DELETE
+// app.delete("/api/posts/:post_title", controllers.post.destroy);
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 4000, () => {
