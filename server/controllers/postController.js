@@ -58,17 +58,43 @@ const Delete = (req, res) => {
   });
 };
 
-const edit = (post, req, res) => {
+const edit = (req, res) => {
+  // console.log(req.params.post_id, req.body);
   db.Post.findByIdAndUpdate(
-    ({ title: req.params.post_title }, post),
+    req.params.post_id,
+    req.body,
+    { new: true },
     (err, updatedPost) => {
-      if (err) {
-        console.log(err);
-      }
-      res.status(200).JSON.stringify(updatedPost);
+      // if (err) res.sendStatus(404).json({ message: err });
+      if (err) throw err;
+      res.json(updatedPost);
     }
   );
 };
+
+// const edit = (req, res) => {
+//   db.Post.findOneByIdAndUpdate(
+//     ({ title: req.params.post_title },
+//     (err, foundPost) => {
+//       if (err) {
+//         console.log(err);
+//       }
+//       foundPost.title = req.body.title;
+//       foundPost.category = req.body.category;
+//       foundPost.img = req.body.img;
+//       foundPost.description = req.body.description;
+//       foundPost.upvotes_required = req.body.upvotes_required;
+//       foundPost.username = localStorage.getItem("username");
+//       foundPost.save((err, foundPost) => {
+//         console.log("foundPost.title=", foundPost);
+//         if (err) {
+//           console.log("Error from post Controller:", err);
+//         }
+//         res.status(200).json(foundPost);
+//       });
+//     })
+//   );
+// };
 
 module.exports = {
   create: create,

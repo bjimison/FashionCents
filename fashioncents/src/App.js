@@ -18,7 +18,7 @@ class App extends Component {
     auth: false
   };
 
-  history = createHistory(this.props);
+  // history = createHistory(this.props);
 
   setAuth = (username, password) => {
     this.setState({
@@ -51,7 +51,7 @@ class App extends Component {
   }
 
   render() {
-    let username = localStorage.getItem("username");
+    // let username = localStorage.getItem("username");
 
     return (
       <div className="App">
@@ -67,7 +67,7 @@ class App extends Component {
                 <div id="login">
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/profile">
-                      Hello, {username}
+                      Hello, {this.state.username}
                     </NavLink>
                   </li>
                   <li className="nav-item">
@@ -112,7 +112,7 @@ class App extends Component {
           <Route path="/createpost" component={CreatePost} />
           <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost" component={ShowPost} />
-          <Route path="/editpost" component={EditPost} />
+          <Route path="/editpost/:post_id" component={EditPost} />
           <Route exact path="/" component={Homepage} />
           <Route path="/*" render={() => <div>Error 404</div>} />
         </Switch>

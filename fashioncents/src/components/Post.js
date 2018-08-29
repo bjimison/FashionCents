@@ -16,9 +16,10 @@ class Post extends Component {
   };
 
   render() {
+    let username = localStorage.getItem("username");
     let posts = this.props.posts.map(post => {
       return (
-        <div className="post-item">
+        <div key={post._id} className="post-item">
           <img src={post.img} />
           <div className="post-detail">
             <p>{post.description}</p>
@@ -35,7 +36,7 @@ class Post extends Component {
             ) : null}
             {username === post.username ? (
               <button value={post.title}>
-                <Link className="link" to="EditPost">
+                <Link className="link" to={`/editpost/${post._id}`}>
                   Edit
                 </Link>
               </button>
@@ -47,7 +48,7 @@ class Post extends Component {
         </div>
       );
     });
-    let username = localStorage.getItem("username");
+
     // console.log("username", username, this.props.post.username);
     return <div className="homepage-post">{posts}</div>;
   }

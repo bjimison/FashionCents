@@ -3,24 +3,31 @@ import { Link } from "react-router-dom";
 import Model from "../models/editPost";
 
 class EditPost extends Component {
-  onSubmit = (event, post) => {
+  onSubmit = event => {
     event.preventDefault();
-    Model.edit({
-      title: this.refs.title,
-      category: this.refs.category,
-      img: this.refs.img,
-      description: this.refs.description,
-      upvotes: 0,
-      upvotes_required: this.refs.upvotes_required,
-      username: this.props.username
-    }).then(res => {
-      if (res.status === 404) {
-        console.log("request to create post failed");
-      }
-      res = res.data;
-      this.setState({ posts: { ...this.props.posts, res } });
-    });
-    this.props.history.push("/");
+    let username = localStorage.getItem("username");
+    let postId = this.props.match.params.post_id;
+    let postData = {
+      title: this.refs.title.value,
+      category: this.refs.category.value,
+      img: this.refs.img.value,
+      description: this.refs.description.value,
+      upvotes_required: parseInt(this.refs.upvotes_required.value),
+      username: username
+    };
+
+    // console.log(postData);
+    Model.edit(postData, postId)
+      .then(res => {
+        //   if (res.status === 404) {
+        //     console.log("request to create post failed");
+        //   }
+        //   res = res.data;
+        //   this.setState({ posts: { ...this.props.posts, res } });
+        console.log(res);
+        this.props.history.push("/");
+      })
+      .catch(err => console.log(err));
   };
 
   render() {

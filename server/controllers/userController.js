@@ -61,7 +61,15 @@ const profile = (req, res) => {
   });
 };
 
+const index = (req, res) => {
+  db.User.find({}, (err, foundUsers) => {
+    if (err) res.send(404).json({ message: err });
+    res.json(foundUsers);
+  });
+};
+
 module.exports = {
+  index: index,
   signup: signup,
   login: login,
   updateProfile: updateProfile,

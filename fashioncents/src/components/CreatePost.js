@@ -11,7 +11,7 @@ class CreatePost extends Component {
       img: this.refs.img.value,
       description: this.refs.description.value,
       upvotes: 0,
-      upvotes_require: this.refs.upvotes_required.value,
+      upvotes_required: parseInt(this.refs.upvotes_required.value),
       username: this.props.username
     }).then(res => {
       if (res.status === 404) {
