@@ -2,10 +2,18 @@ import React, { Component } from "react";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import Shirt from "../images/shirt.jpg";
 import Model from "../models/deletePost";
+import GetModel from "../models/getPost";
 
 class Post extends Component {
   state = {
-    deleted: []
+    deleted: [],
+    title: "",
+    category: "",
+    description: "",
+    creator: "",
+    upvotes_required: "",
+    img: "",
+    username: ""
   };
 
   handleClick = event => {
@@ -18,29 +26,43 @@ class Post extends Component {
     });
   };
 
+  componentDidMount = () => {
+    let username = localStorage.getItem("username");
+    let postId = this.props.match.params.post_id;
+    // let postId = req.params._id;
+
+    GetModel.getOne(postId)
+      .then(res => {
+        this.setState({
+          deleted: [],
+          title: res.title,
+          category: res.category,
+          description: res.description,
+          creator: res.creator,
+          upvotes_required: res.upvotes_required,
+          img: res.img,
+          username: res.username
+        });
+        console.log(res);
+        this.props.history.push("/showpost/:post_id");
+      })
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <div className="post-container">
         <div className="post-detail-show">
-          <h3 id="title">Post 1</h3>
-          <h5 id="category">Category</h5>
+          <h3 id="title">{this.state.title}</h3>
+          <h5 id="category">{this.state.category}</h5>
         </div>
         <div className="post-detail-show">
-          <h5 id="creator">Created By</h5>
-          <h5 id="upvotes">Upvotes needed for production</h5>
+          <h5 id="creator">{this.state.creator}</h5>
+          <h5 id="upvotes">{this.state.upvotes_required}</h5>
         </div>
         <div className="post-description-show">
-          <img src={Shirt} />
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-            tristique sem augue, et auctor nisl luctus ut. Nam blandit sit amet
-            tellus ut rhoncus. Donec ut sollicitudin metus. Suspendisse laoreet
-            vulputate sapien, in dapibus tellus pharetra hendrerit. Ut non
-            imperdiet eros. Aenean porttitor ullamcorper imperdiet. Vivamus vel
-            interdum ipsum, eu ullamcorper libero. Class aptent taciti sociosqu
-            ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc
-            mi enim, pulvinar vel erat sit amet, laoreet gravida eros.
-          </p>
+          <img src={this.state.img} />
+          <p>{this.state.description}</p>
           <div className="up-arrow">
             <i className="fas fa-sort-up" />
           </div>

@@ -24,7 +24,7 @@ class Post extends Component {
           <div className="post-detail">
             <p>{post.description}</p>
             <button>
-              <Link className="link" to="ShowPost">
+              <Link className="link" to={`/showpost/${post._id}`}>
                 View Post
               </Link>
             </button>

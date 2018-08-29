@@ -111,7 +111,7 @@ class App extends Component {
           />
           <Route path="/createpost" component={CreatePost} />
           <Route path="/profile" render={props => <Profile {...props} />} />
-          <Route path="/showpost" component={ShowPost} />
+          <Route path="/showpost/:post_id" component={ShowPost} />
           <Route path="/editpost/:post_id" component={EditPost} />
           <Route exact path="/" component={Homepage} />
           <Route path="/*" render={() => <div>Error 404</div>} />

@@ -16,13 +16,8 @@ class EditPost extends Component {
       username: username
     };
 
-    // console.log(postData);
     Model.edit(postData, postId)
       .then(res => {
-        //   if (res.status === 404) {
-        //     console.log("request to create post failed");
-        //   }
-        //   res = res.data;
         //   this.setState({ posts: { ...this.props.posts, res } });
         console.log(res);
         this.props.history.push("/");
