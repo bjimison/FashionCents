@@ -24,18 +24,28 @@ class CreatePost extends Component {
   render() {
     return (
       <div>
-        <h1>Create Post</h1>
-        <form onSubmit={this.onSubmit}>
-          <input ref="title" valuetype="text" placeholder="Title" />
-          <input ref="category" type="text" placeholder="Category" />
-          <input ref="img" type="text" placeholder="Paste image address here" />
-          <input
-            ref="upvotes_required"
-            type="text"
-            placeholder="Enter the number of Upvotes desired to Create"
-          />
-          <textarea placeholder="Description" ref="description" />
-          <input type="submit" />
+        <h1 id="create-title">Show the world your ideas</h1>
+        <form className="createForm" onSubmit={this.onSubmit}>
+          <div className="form-input">
+            <input ref="title" type="text" placeholder="Title" />
+            <input ref="category" type="text" placeholder="Category" />
+          </div>
+          <div className="form-input">
+            <input
+              ref="img"
+              type="text"
+              placeholder="Paste image address here"
+            />
+            <input
+              ref="upvotes_required"
+              type="text"
+              placeholder="Enter the number of Upvotes desired to Create"
+            />
+          </div>
+          <div className="form-text">
+            <textarea placeholder="Description" ref="description" />
+            <input className="button" type="submit" />
+          </div>
         </form>
       </div>
     );

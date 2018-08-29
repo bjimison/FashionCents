@@ -13,7 +13,7 @@ body {
 }
 
 nav {
-  background-color: blue;
+  background-color: #ad0016;
   height: 80px;
 }
 
@@ -168,4 +168,53 @@ nav {
 
 .link:hover {
   color: gray;
+}
+
+/* ####################### Create Post Form ######################## */
+.createForm {
+  flex-direction: column;
+  text-align: center;
+}
+
+.createForm input {
+  height: 2rem;
+  margin: 1rem;
+}
+
+.form-input {
+  height: 3rem;
+  margin: auto;
+}
+
+.form-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button {
+  border: 1px solid black;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+}
+
+.button:hover {
+  background-color: #ad0016;
+}
+
+.createForm input {
+  width: 200px;
+}
+
+.createForm textarea {
+  height: 200px;
+  width: 600px;
+  margin: 1rem;
+}
+
+#create-title {
+  text-align: center;
 }
