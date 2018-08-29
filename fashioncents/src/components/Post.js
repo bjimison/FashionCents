@@ -3,6 +3,7 @@ import { Switch, Route, Link, withRouter } from "react-router-dom";
 import ShowPost from "./ShowPost";
 import Shirt from "../images/shirt.jpg";
 import DeletePost from "../models/deletePost";
+import EditPost from "./EditPost";
 
 class Post extends Component {
   delete = event => {
@@ -30,6 +31,13 @@ class Post extends Component {
             {username === post.username ? (
               <button onClick={this.delete} value={post.title}>
                 Delete
+              </button>
+            ) : null}
+            {username === post.username ? (
+              <button value={post.title}>
+                <Link className="link" to="EditPost">
+                  Edit
+                </Link>
               </button>
             ) : null}
           </div>

@@ -9,6 +9,7 @@ import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
 import PostContainer from "./containers/PostContainer";
 import { createBrowserHistory as createHistory } from "history";
+import EditPost from "./components/EditPost";
 
 class App extends Component {
   state = {
@@ -111,6 +112,7 @@ class App extends Component {
           <Route path="/createpost" component={CreatePost} />
           <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost" component={ShowPost} />
+          <Route path="/editpost" component={EditPost} />
           <Route exact path="/" component={Homepage} />
           <Route path="/*" render={() => <div>Error 404</div>} />
         </Switch>

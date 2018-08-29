@@ -203,6 +203,7 @@ nav {
 
 .button:hover {
   background-color: #ad0016;
+  color: gray;
 }
 
 .createForm input {

@@ -24,7 +24,7 @@ app.get("/api/posts", controllers.post.index);
 // app.get("/api/posts/:category", controllers.post.getByCategory);
 
 // PUT
-
+// app.put("/api/posts/:post_title/edit", controllers.post.edit);
 // DELETE
 // app.delete("/api/posts/:post_title", controllers.post.destroy);
 

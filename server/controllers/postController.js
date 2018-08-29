@@ -49,7 +49,7 @@ const getByDate = (req, res) => {
 };
 
 const Delete = (req, res) => {
-  db.Post.findByIdAndRemove(req.params.post_title, function(err, deletedPost) {
+  db.Post.findByIdAndRemove(req.params.post_title, (err, deletedPost) => {
     if (err) {
       console.log("userController.update error", err);
     }
@@ -58,11 +58,24 @@ const Delete = (req, res) => {
   });
 };
 
+const edit = (post, req, res) => {
+  db.Post.findByIdAndUpdate(
+    ({ title: req.params.post_title }, post),
+    (err, updatedPost) => {
+      if (err) {
+        console.log(err);
+      }
+      res.status(200).JSON.stringify(updatedPost);
+    }
+  );
+};
+
 module.exports = {
   create: create,
   index: index,
   show: show,
   getByCategory: getByCategory,
   getByDate: getByDate,
-  Delete: Delete
+  Delete: Delete,
+  edit: edit
 };
