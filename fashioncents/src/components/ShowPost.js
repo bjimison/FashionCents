@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, withRouter } from "react-router-dom";
-import Shirt from "../images/shirt.jpg";
 import Model from "../models/deletePost";
 import GetModel from "../models/getPost";
 

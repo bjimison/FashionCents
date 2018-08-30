@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import { Switch, Route, NavLink, withRouter } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import Homepage from "./components/Homepage";
 import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
-import PostContainer from "./containers/PostContainer";
-import { createBrowserHistory as createHistory } from "history";
 import EditPost from "./components/EditPost";
 import Navbar from "./components/Navbar";
 

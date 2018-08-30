@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Model from "../models/createPost";
 
 class CreatePost extends Component {

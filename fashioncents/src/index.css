@@ -11,22 +11,25 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin: 0;
 }
 
 nav {
   background-color: #ad0016;
-  /* height: 80px; */
 }
 
 .nav-item {
   margin: 1rem 1rem;
   list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
 }
 
 .nav-link {
   text-decoration: none;
   color: white;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
 
 .nav-link:hover {
@@ -34,6 +37,11 @@ nav {
 }
 
 /* ######################## HOMEPAGE ################################# */
+
+#login {
+  display: flex;
+  flex-direction: row;
+}
 
 #exists {
   display: none;

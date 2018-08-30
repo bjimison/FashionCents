@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, withRouter } from "react-router-dom";
-import ShowPost from "./ShowPost";
-import Shirt from "../images/shirt.jpg";
+import { Link } from "react-router-dom";
 import DeletePost from "../models/deletePost";
-import EditPost from "./EditPost";
 
 class Post extends Component {
   delete = event => {

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, withRouter } from "react-router-dom";
 import Post from "./Post";
 import axios from "axios";
 
