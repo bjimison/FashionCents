@@ -1,7 +1,35 @@
 import React, { Component } from "react";
-import { Switch, Route, NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
+import LoginModal from "./LoginModal";
 
 class Navbar extends Component {
+  state = {
+    modalIsOpen: false
+  };
+
+  // Modal.setAppElement("#login-modal");
+
+  customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)"
+    }
+  };
+
+  openModal = () => {
+    this.setState({ modalIsOpen: true });
+  };
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false });
+  };
+
   render() {
     return (
       <div>
@@ -35,21 +63,38 @@ class Navbar extends Component {
                   </NavLink>
                 </li>
                 <div id="login">
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/login">
+                  <li id="login-modal" className="nav-item">
+                    <button onClick={this.openModal} className="nav-link">
                       Login
-                    </NavLink>
+                    </button>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/signup">
+                    <button onClick={this.openModal} className="nav-link">
                       Sign up
-                    </NavLink>
+                    </button>
                   </li>
                 </div>
               </ul>
             )}
           </div>
         </nav>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          contentLabel="Example Modal"
+        >
+          <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
+          <button onClick={this.closeModal}>close</button>
+          <div>modal</div>
+          <form>
+            <input />
+            <button>tab navigation</button>
+            <button>stays</button>
+            <button>inside</button>
+            <button>the modal</button>
+          </form>
+        </Modal>
       </div>
     );
   }
