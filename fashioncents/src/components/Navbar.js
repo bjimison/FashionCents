@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import SignupModel from "../models/signup.js";
+import LoginModel from "../models/login.js";
 
 class Navbar extends Component {
   state = {
@@ -23,7 +23,24 @@ class Navbar extends Component {
     }
   };
 
-  onSubmit = event => {
+  onSubmitLogin = event => {
+    event.preventDefault();
+    LoginModel.login(this.refs.username.value, this.refs.password.value).then(
+      res => {
+        if (res.status === 404) {
+          console.log("request from login failed");
+        }
+        localStorage.setItem("username", res.data.username);
+        localStorage.setItem("password", res.data.password);
+        console.log("RESPONSE:", res.data.username, res.data._id);
+        this.props.setAuth(res.data.username, res.data.password);
+        this.closeloginModal();
+        // this.props.history.push("/");
+      }
+    );
+  };
+
+  onSubmitSignup = event => {
     event.preventDefault();
     if (this.refs.password.value === this.refs.confirmpassword.value) {
       SignupModel.signup(this.refs.username.value, this.refs.password.value)
@@ -125,13 +142,11 @@ class Navbar extends Component {
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
           <button onClick={this.closeloginModal}>close</button>
-          <div>modal</div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
+          <h2>Login</h2>
+          <form onSubmit={this.onSubmitLogin} className="registerForm">
+            <input type="text" ref="username" placeholder="Username" />
+            <input type="text" ref="password" placeholder="Password" />
+            <input type="submit" value="Submit" />
           </form>
         </Modal>
         <Modal
@@ -147,7 +162,7 @@ class Navbar extends Component {
           <p id="exists">
             This Username already exists. Please select another one.
           </p>
-          <form onSubmit={this.onSubmit} className="registerForm">
+          <form onSubmit={this.onSubmitSignup} className="registerForm">
             <input type="text" ref="username" placeholder="Username" />
             <input type="text" ref="password" placeholder="Password" />
             <input

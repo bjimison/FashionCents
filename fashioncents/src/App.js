@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, NavLink, withRouter } from "react-router-dom";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
+import { Switch, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
 import Homepage from "./components/Homepage";
 import CreatePost from "./components/CreatePost";
@@ -60,14 +58,6 @@ class App extends Component {
           logout={this.logout}
         />
         <Switch>
-          <Route
-            path="/login"
-            render={props => <Login {...props} setAuth={this.setAuth} />}
-          />
-          <Route
-            path="/signup"
-            render={props => <Signup {...props} setAuth={this.setAuth} />}
-          />
           <Route path="/createpost" component={CreatePost} />
           <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" component={ShowPost} />
