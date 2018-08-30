@@ -1,19 +1,55 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, withRouter } from "react-router-dom";
+import { Switch, Route, NavLink, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome...</h1>
-        <div id="search">
-          <input type="text" placeholder="Search" />
-          <button>
-            <Link className="link" to="/createpost">
-              Post Your Creation
-            </Link>
-          </button>
-        </div>
+        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+          <div className="collapese navbar-collapse" id="navigation">
+            {this.props.auth ? (
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <NavLink className="nav-link" exact to="/">
+                    FashionCents
+                  </NavLink>
+                </li>
+                <div id="login">
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/profile">
+                      Hello, {this.props.username}
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <span className="nav-link" onClick={this.props.logout}>
+                      Logout
+                    </span>
+                  </li>
+                </div>
+              </ul>
+            ) : (
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <NavLink className="nav-link" exact to="/">
+                    FashionCents
+                  </NavLink>
+                </li>
+                <div id="login">
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/login">
+                      Login
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/signup">
+                      Sign up
+                    </NavLink>
+                  </li>
+                </div>
+              </ul>
+            )}
+          </div>
+        </nav>
       </div>
     );
   }

@@ -10,6 +10,7 @@ import ShowPost from "./components/ShowPost";
 import PostContainer from "./containers/PostContainer";
 import { createBrowserHistory as createHistory } from "history";
 import EditPost from "./components/EditPost";
+import Navbar from "./components/Navbar";
 
 class App extends Component {
   state = {
@@ -55,51 +56,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-          <div className="collapese navbar-collapse" id="navigation">
-            {this.state.auth ? (
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <NavLink className="nav-link" exact to="/">
-                    FashionCents
-                  </NavLink>
-                </li>
-                <div id="login">
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/profile">
-                      Hello, {this.state.username}
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <span className="nav-link" onClick={this.logout}>
-                      Logout
-                    </span>
-                  </li>
-                </div>
-              </ul>
-            ) : (
-              <ul className="navbar-nav ml-auto">
-                <li className="nav-item">
-                  <NavLink className="nav-link" exact to="/">
-                    FashionCents
-                  </NavLink>
-                </li>
-                <div id="login">
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/login">
-                      Login
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink className="nav-link" to="/signup">
-                      Sign up
-                    </NavLink>
-                  </li>
-                </div>
-              </ul>
-            )}
-          </div>
-        </nav>
+        <Navbar
+          auth={this.state.auth}
+          username={this.state.username}
+          setAuth={this.setAuth}
+          logout={this.logout}
+        />
         <Switch>
           <Route
             path="/login"
@@ -113,7 +75,7 @@ class App extends Component {
           <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" component={ShowPost} />
           <Route path="/editpost/:post_id" component={EditPost} />
-          <Route exact path="/" component={Homepage} />
+          <Route exact path="/" logout={this.logout} component={Homepage} />
           <Route path="/*" render={() => <div>Error 404</div>} />
         </Switch>
       </div>

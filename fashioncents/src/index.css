@@ -10,12 +10,12 @@ body {
 .navbar-nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 nav {
   background-color: #ad0016;
-  height: 80px;
+  /* height: 80px; */
 }
 
 .nav-item {
@@ -32,6 +32,8 @@ nav {
 .nav-link:hover {
   color: gray;
 }
+
+/* ######################## HOMEPAGE ################################# */
 
 #exists {
   display: none;
@@ -54,7 +56,6 @@ nav {
   margin: 2rem auto;
 }
 
-/* ######################## HOMEPAGE ################################# */
 .homepage-post {
   background: lightgray;
   display: flex;
