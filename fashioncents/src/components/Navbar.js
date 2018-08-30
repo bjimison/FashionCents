@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
-import LoginModal from "./LoginModal";
+// import LoginModal from "./LoginModal";
 
 class Navbar extends Component {
   state = {
-    modalIsOpen: false
+    loginmodalIsOpen: false,
+    signupmodalIsOpen: false
   };
 
   // Modal.setAppElement("#login-modal");
@@ -22,12 +23,20 @@ class Navbar extends Component {
     }
   };
 
-  openModal = () => {
-    this.setState({ modalIsOpen: true });
+  openloginModal = () => {
+    this.setState({ loginmodalIsOpen: true });
   };
 
-  closeModal = () => {
-    this.setState({ modalIsOpen: false });
+  closeloginModal = () => {
+    this.setState({ loginmodalIsOpen: false });
+  };
+
+  opensignupModal = () => {
+    this.setState({ signupmodalIsOpen: true });
+  };
+
+  closesignupModal = () => {
+    this.setState({ signupmodalIsOpen: false });
   };
 
   render() {
@@ -64,12 +73,12 @@ class Navbar extends Component {
                 </li>
                 <div id="login">
                   <li id="login-modal" className="nav-item">
-                    <button onClick={this.openModal} className="nav-link">
+                    <button onClick={this.openloginModal} className="nav-link">
                       Login
                     </button>
                   </li>
                   <li className="nav-item">
-                    <button onClick={this.openModal} className="nav-link">
+                    <button onClick={this.opensignupModal} className="nav-link">
                       Sign up
                     </button>
                   </li>
@@ -79,13 +88,31 @@ class Navbar extends Component {
           </div>
         </nav>
         <Modal
-          isOpen={this.state.modalIsOpen}
+          isOpen={this.state.loginmodalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           contentLabel="Example Modal"
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
-          <button onClick={this.closeModal}>close</button>
+          <button onClick={this.closeloginModal}>close</button>
+          <div>modal</div>
+          <form>
+            <input />
+            <button>tab navigation</button>
+            <button>stays</button>
+            <button>inside</button>
+            <button>the modal</button>
+          </form>
+        </Modal>
+        <Modal
+          id="signup-modal"
+          isOpen={this.state.signupmodalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onRequestClose={this.closeModal}
+          contentLabel="Example Modal"
+        >
+          <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
+          <button onClick={this.closesignupModal}>close</button>
           <div>modal</div>
           <form>
             <input />
