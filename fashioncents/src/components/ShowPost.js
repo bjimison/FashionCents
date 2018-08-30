@@ -2,9 +2,8 @@ import React, { Component } from "react";
 import Model from "../models/deletePost";
 import GetModel from "../models/getPost";
 
-class Post extends Component {
+class ShowPost extends Component {
   state = {
-    deleted: [],
     title: "",
     category: "",
     description: "",
@@ -25,14 +24,12 @@ class Post extends Component {
   };
 
   componentDidMount = () => {
-    let username = localStorage.getItem("username");
+    // let username = localStorage.getItem("username");
     let postId = this.props.match.params.post_id;
     // let postId = req.params._id;
-
     GetModel.getOne(postId)
       .then(res => {
         this.setState({
-          deleted: [],
           title: res.title,
           category: res.category,
           description: res.description,
@@ -41,10 +38,10 @@ class Post extends Component {
           img: res.img,
           username: res.username
         });
-        console.log(res);
-        this.props.history.push("/showpost/:post_id");
+        console.log("SHOWPOST: ", res);
       })
       .catch(err => console.log(err));
+    this.props.history.push("/showpost/:post_id");
   };
 
   render() {
@@ -71,4 +68,4 @@ class Post extends Component {
   }
 }
 
-export default Post;
+export default ShowPost;

@@ -6,6 +6,15 @@ body {
 }
 
 /* ############################# NAV ############################### */
+#login-button {
+  background-color: #ad0016;
+  border: none;
+}
+
+#signup-button {
+  background-color: #ad0016;
+  border: none;
+}
 
 .navbar-nav {
   display: flex;

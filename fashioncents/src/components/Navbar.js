@@ -19,7 +19,12 @@ class Navbar extends Component {
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-      transform: "translate(-50%, -50%)"
+      transform: "translate(-50%, -50%)",
+      width: "50%",
+      height: "50%",
+      border: "3px solid #ad0016",
+      display: "block"
+      // font_family: "Markazi Text"
     }
   };
 
@@ -119,12 +124,20 @@ class Navbar extends Component {
                 </li>
                 <div id="login">
                   <li id="login-modal" className="nav-item">
-                    <button onClick={this.openloginModal} className="nav-link">
+                    <button
+                      id="login-button"
+                      onClick={this.openloginModal}
+                      className="nav-link"
+                    >
                       Login
                     </button>
                   </li>
                   <li className="nav-item">
-                    <button onClick={this.opensignupModal} className="nav-link">
+                    <button
+                      id="signup-button"
+                      onClick={this.opensignupModal}
+                      className="nav-link"
+                    >
                       Sign up
                     </button>
                   </li>
@@ -134,22 +147,23 @@ class Navbar extends Component {
           </div>
         </nav>
         <Modal
+          style={this.customStyles}
           ariaHideApp={false}
           isOpen={this.state.loginmodalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           contentLabel="Example Modal"
         >
-          <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
-          <button onClick={this.closeloginModal}>close</button>
-          <h2>Login</h2>
+          <h2 ref={subtitle => (this.subtitle = subtitle)}>Login</h2>
           <form onSubmit={this.onSubmitLogin} className="registerForm">
             <input type="text" ref="username" placeholder="Username" />
             <input type="text" ref="password" placeholder="Password" />
             <input type="submit" value="Submit" />
           </form>
+          <button onClick={this.closeloginModal}>close</button>
         </Modal>
         <Modal
+          style={this.customStyles}
           ariaHideApp={false}
           id="signup-modal"
           isOpen={this.state.signupmodalIsOpen}
@@ -158,7 +172,6 @@ class Navbar extends Component {
           contentLabel="Example Modal"
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign Up</h2>
-          <button onClick={this.closesignupModal}>close</button>
           <p id="exists">
             This Username already exists. Please select another one.
           </p>
@@ -172,6 +185,7 @@ class Navbar extends Component {
             />
             <input type="submit" value="Submit" />
           </form>
+          <button onClick={this.closesignupModal}>close</button>
         </Modal>
       </div>
     );
