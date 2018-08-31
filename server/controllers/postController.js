@@ -48,8 +48,8 @@ const getByDate = (req, res) => {
   });
 };
 
-const Delete = (req, res) => {
-  db.Post.findByIdAndRemove(req.params.post_title, (err, deletedPost) => {
+const destroy = (req, res) => {
+  db.Post.findByIdAndRemove(req.params.post_id, (err, deletedPost) => {
     if (err) {
       console.log("userController.update error", err);
     }
@@ -72,36 +72,12 @@ const edit = (req, res) => {
   );
 };
 
-// const edit = (req, res) => {
-//   db.Post.findOneByIdAndUpdate(
-//     ({ title: req.params.post_title },
-//     (err, foundPost) => {
-//       if (err) {
-//         console.log(err);
-//       }
-//       foundPost.title = req.body.title;
-//       foundPost.category = req.body.category;
-//       foundPost.img = req.body.img;
-//       foundPost.description = req.body.description;
-//       foundPost.upvotes_required = req.body.upvotes_required;
-//       foundPost.username = localStorage.getItem("username");
-//       foundPost.save((err, foundPost) => {
-//         console.log("foundPost.title=", foundPost);
-//         if (err) {
-//           console.log("Error from post Controller:", err);
-//         }
-//         res.status(200).json(foundPost);
-//       });
-//     })
-//   );
-// };
-
 module.exports = {
   create: create,
   index: index,
   show: show,
   getByCategory: getByCategory,
   getByDate: getByDate,
-  Delete: Delete,
+  destroy: destroy,
   edit: edit
 };

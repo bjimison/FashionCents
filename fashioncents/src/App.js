@@ -6,15 +6,32 @@ import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
 import EditPost from "./components/EditPost";
 import Navbar from "./components/Navbar";
+import PostContainer from "./containers/PostContainer";
+import axios from "axios";
+import Delete from "./models/deletePost";
 
 class App extends Component {
   state = {
     username: "",
     password: "",
-    auth: false
+    auth: false,
+    posts: []
   };
 
   // history = createHistory(this.props);
+
+  delete = event => {
+    Delete.delete(event.target.value).then(res => {
+      let posts = this.props.posts.map(post => {
+        if (post._id !== res.data._id) {
+          return post;
+        }
+      });
+      this.setState({
+        posts: posts
+      });
+    });
+  };
 
   setAuth = (username, password) => {
     this.setState({
@@ -44,6 +61,10 @@ class App extends Component {
         password: localStorage.getItem("password")
       });
     }
+
+    axios.get("http://localhost:4000/api/posts").then(response => {
+      this.setState({ posts: response.data });
+    });
   }
 
   render() {
@@ -58,11 +79,19 @@ class App extends Component {
           logout={this.logout}
         />
         <Switch>
-          <Route path="/createpost" component={CreatePost} />
+          <Route
+            path="/createpost"
+            render={props => <CreatePost {...props} />}
+          />
           <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" component={ShowPost} />
           <Route path="/editpost/:post_id" component={EditPost} />
-          <Route exact path="/" logout={this.logout} component={Homepage} />
+          <Route path="/editpost/:post_id" />
+          <Route
+            exact
+            path="/"
+            render={props => <PostContainer delete={this.delete} {...props} />}
+          />
           <Route path="/*" render={() => <div>Error 404</div>} />
         </Switch>
       </div>

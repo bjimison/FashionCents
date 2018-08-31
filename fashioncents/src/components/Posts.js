@@ -1,28 +1,17 @@
 import React, { Component } from "react";
 import Post from "./Post";
-import axios from "axios";
 
 class Posts extends Component {
-  state = {
-    posts: []
-  };
-
-  componentDidMount = () => {
-    axios.get("http://localhost:4000/api/posts").then(response => {
-      this.setState({ posts: response.data });
-    });
-  };
-
   render() {
-    let posts = this.props.posts.map(post => {
-      return <Post key={post.title} post={post} delete={this.props.delete} />;
-    });
+    // console.log("posts", this.props.posts);
+    // let posts = this.props.posts.map(post => {
+    //   return <Post key={post._id} post={post} delete={this.props.delete} />;
+    // });
 
     return (
       <div>
-        <div className="posts">
-          <Post posts={this.props.posts} />
-        </div>
+        <div className="posts">{posts}</div>
+        <Post posts={this.props.posts} />
       </div>
     );
   }

@@ -1,9 +1,8 @@
 import axios from "axios";
 
 class deletePost {
-  static delete(post_title) {
-    let request = axios.delete(`http://localhost:4000/api/posts/${post_title}`);
-    console.log(request);
+  static delete(post_id) {
+    let request = axios.delete(`http://localhost:4000/api/posts/${post_id}`);
     return request;
   }
 }
