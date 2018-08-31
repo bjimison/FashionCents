@@ -10,8 +10,6 @@ class Navbar extends Component {
     signupmodalIsOpen: false
   };
 
-  //   Modal.setAppElement('#login-modal');
-
   customStyles = {
     content: {
       top: "50%",
@@ -99,6 +97,7 @@ class Navbar extends Component {
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <NavLink className="nav-link" exact to="/">
+                    <i class="fas fa-child" />
                     FashionCents
                   </NavLink>
                 </li>
@@ -119,6 +118,7 @@ class Navbar extends Component {
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <NavLink className="nav-link" exact to="/">
+                    <i class="fas fa-child" />
                     FashionCents
                   </NavLink>
                 </li>

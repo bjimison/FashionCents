@@ -4,12 +4,14 @@ import DeletePost from "../models/deletePost";
 
 class Post extends Component {
   delete = event => {
-    console.log("post_title", event.target.value);
-    DeletePost.delete(event.target.value).then(res => {
-      this.setState({
-        deleted: this.state.deleted.push(res)
-      });
-    });
+    this.props.delete(event.target.value);
+    // console.log("post_title", event.target.value);
+    // DeletePost.delete(event.target.value).then(res => {
+    //   console.log(res.data);
+    //   // this.setState({
+    //   //   deleted: this.state.deleted.push(res)
+    //   // });
+    // });
   };
 
   render() {
@@ -19,7 +21,7 @@ class Post extends Component {
         <div key={post._id} className="post-item">
           <img src={post.img} />
           <div className="post-detail">
-            <p>{post.description}</p>
+            <p>{post.title}</p>
             <button>
               <Link className="link" to={`/showpost/${post._id}`}>
                 View Post
@@ -27,7 +29,7 @@ class Post extends Component {
             </button>
 
             {username === post.username ? (
-              <button onClick={this.delete} value={post.title}>
+              <button onClick={this.delete} value={post._id}>
                 Delete
               </button>
             ) : null}

@@ -27,7 +27,7 @@ app.get("/api/users", controllers.user.index);
 // PUT
 app.put("/api/posts/:post_id", controllers.post.edit);
 // DELETE
-// app.delete("/api/posts/:post_title", controllers.post.destroy);
+app.delete("/api/posts/:post_id", controllers.post.destroy);
 
 // listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
 app.listen(process.env.PORT || 4000, () => {

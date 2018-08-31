@@ -12,17 +12,9 @@ class PostContainer extends Component {
   };
 
   componentDidMount = () => {
+    console.log("postcontainer");
     axios.get("http://localhost:4000/api/posts").then(response => {
       this.setState({ posts: response.data });
-    });
-  };
-
-  delete = event => {
-    console.log("post_title", event.target.value);
-    DeletePost.delete(event.target.value).then(res => {
-      this.setState({
-        deleted: this.state.deleted.push(res)
-      });
     });
   };
 
