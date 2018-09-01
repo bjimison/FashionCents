@@ -6,15 +6,49 @@ import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
 import EditPost from "./components/EditPost";
 import Navbar from "./components/Navbar";
+import PostContainer from "./containers/PostContainer";
+import axios from "axios";
+import Delete from "./models/deletePost";
+import Posts from "./components/Posts";
 
 class App extends Component {
   state = {
     username: "",
     password: "",
-    auth: false
+    auth: false,
+    posts: []
   };
 
   // history = createHistory(this.props);
+
+  componentDidMount = () => {
+    axios.get("http://localhost:4000/api/posts").then(res => {
+      // console.log(res.data);
+      this.setState({ posts: res.data });
+    });
+  };
+
+  addPost = newPost => {
+    let posts = this.state.posts;
+    posts.push(newPost);
+    this.setState({ posts: posts });
+  };
+
+  deletePost = post_id => {
+    Delete.delete(post_id).then(res => {
+      let posts = this.state.posts;
+      posts.map((post, index) => {
+        console.log(index);
+        if (post._id === res.data._id) {
+          posts.splice(index, 1);
+        }
+      });
+
+      this.setState({
+        posts: posts
+      });
+    });
+  };
 
   setAuth = (username, password) => {
     this.setState({
@@ -44,6 +78,10 @@ class App extends Component {
         password: localStorage.getItem("password")
       });
     }
+
+    axios.get("http://localhost:4000/api/posts").then(response => {
+      this.setState({ posts: response.data });
+    });
   }
 
   render() {
@@ -58,11 +96,26 @@ class App extends Component {
           logout={this.logout}
         />
         <Switch>
-          <Route path="/createpost" component={CreatePost} />
+          <Route
+            path="/createpost"
+            render={props => <CreatePost addPost={this.addPost} {...props} />}
+          />
           <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" component={ShowPost} />
           <Route path="/editpost/:post_id" component={EditPost} />
-          <Route exact path="/" logout={this.logout} component={Homepage} />
+          <Route path="/editpost/:post_id" />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Posts
+                delete={this.deletePost}
+                posts={this.state.posts}
+                username={this.state.username}
+                {...props}
+              />
+            )}
+          />
           <Route path="/*" render={() => <div>Error 404</div>} />
         </Switch>
       </div>

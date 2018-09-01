@@ -20,6 +20,7 @@ app.post("/api/posts/create", controllers.post.create);
 // GET
 app.get("/api/users/:username/profile", controllers.user.profile);
 app.get("/api/posts", controllers.post.index);
+app.get("/api/posts/:post_id", controllers.post.show);
 app.get("/api/users", controllers.user.index);
 // app.get("/api/posts/:title", controllers.post.show);
 // app.get("/api/posts/:category", controllers.post.getByCategory);

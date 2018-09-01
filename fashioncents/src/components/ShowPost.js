@@ -26,6 +26,7 @@ class ShowPost extends Component {
   componentDidMount = () => {
     // let username = localStorage.getItem("username");
     let postId = this.props.match.params.post_id;
+    console.log("SHOWPOST_ID: ", postId);
     // let postId = req.params._id;
     GetModel.getOne(postId)
       .then(res => {
