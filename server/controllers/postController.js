@@ -10,9 +10,8 @@ const create = (req, res) => {
   });
 };
 
-// GET /api/user
+// GET
 const index = (req, res) => {
-  // access database and pull out all posts
   db.Post.find({}, (err, allPosts) => {
     if (err) {
       console.log("error from post index:", err);
@@ -59,13 +58,11 @@ const destroy = (req, res) => {
 };
 
 const edit = (req, res) => {
-  // console.log(req.params.post_id, req.body);
   db.Post.findByIdAndUpdate(
     req.params.post_id,
     req.body,
     { new: true },
     (err, updatedPost) => {
-      // if (err) res.sendStatus(404).json({ message: err });
       if (err) throw err;
       res.json(updatedPost);
     }

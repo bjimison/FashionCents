@@ -14,6 +14,7 @@ class CreatePost extends Component {
       username: localStorage.getItem("username")
     }).then(res => {
       console.log("creating", res.data);
+      this.props.addPost(res.data);
       if (res.status === 404) {
         console.log("request to create post failed");
       }

@@ -1,23 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import DeletePost from "../models/deletePost";
+import EditPost from "./EditPost";
+import { Switch, Route, withRouter } from "react-router-dom";
 
 class Post extends Component {
-  // delete = event => {
-  //   event.preventDefault();
-  //   console.log("post._id", event.target.value);
-  //   DeletePost.delete(event.target.value).then(res => {
-  //     if (res.status === 404) {
-  //       console.log("request to create post failed");
-  //     }
-  //     // this.props.history.push("/");
-  //   });
+  // state = {
+  //   post: ""
   // };
 
   render() {
     let username = localStorage.getItem("username");
     let post = this.props.post;
-    console.log(post);
+    // this.setState({ post });
+    // console.log(this.state.post);
     return (
       <div key={post._id} className="post-item">
         <img src={post.img} />
@@ -30,9 +26,7 @@ class Post extends Component {
           </button>
 
           {username === post.username ? (
-            <button onClick={this.props.delete(post._id)} value={post._id}>
-              Delete
-            </button>
+            <button onClick={() => this.props.delete(post._id)}>Delete</button>
           ) : null}
           {username === post.username ? (
             <button value={post.title}>
@@ -45,6 +39,12 @@ class Post extends Component {
         <div className="up-arrow">
           <i className="fas fa-sort-up" />
         </div>
+        <Switch>
+          <Route
+            path={`/editpost/${post._id}`}
+            render={() => <EditPost post={this.state.post} />}
+          />
+        </Switch>
       </div>
     );
   }

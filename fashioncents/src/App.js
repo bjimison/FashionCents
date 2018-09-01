@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import PostContainer from "./containers/PostContainer";
 import axios from "axios";
 import Delete from "./models/deletePost";
+import Posts from "./components/Posts";
 
 class App extends Component {
   state = {
@@ -20,13 +21,29 @@ class App extends Component {
 
   // history = createHistory(this.props);
 
-  delete = event => {
-    Delete.delete(event.target.value).then(res => {
-      let posts = this.props.posts.map(post => {
-        if (post._id !== res.data._id) {
-          return post;
+  componentDidMount = () => {
+    axios.get("http://localhost:4000/api/posts").then(res => {
+      // console.log(res.data);
+      this.setState({ posts: res.data });
+    });
+  };
+
+  addPost = newPost => {
+    let posts = this.state.posts;
+    posts.push(newPost);
+    this.setState({ posts: posts });
+  };
+
+  deletePost = post_id => {
+    Delete.delete(post_id).then(res => {
+      let posts = this.state.posts;
+      posts.map((post, index) => {
+        console.log(index);
+        if (post._id === res.data._id) {
+          posts.splice(index, 1);
         }
       });
+
       this.setState({
         posts: posts
       });
@@ -81,7 +98,7 @@ class App extends Component {
         <Switch>
           <Route
             path="/createpost"
-            render={props => <CreatePost {...props} />}
+            render={props => <CreatePost addPost={this.addPost} {...props} />}
           />
           <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" component={ShowPost} />
@@ -90,7 +107,14 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={props => <PostContainer delete={this.delete} {...props} />}
+            render={props => (
+              <Posts
+                delete={this.deletePost}
+                posts={this.state.posts}
+                username={this.state.username}
+                {...props}
+              />
+            )}
           />
           <Route path="/*" render={() => <div>Error 404</div>} />
         </Switch>
