@@ -21,7 +21,7 @@ const index = (req, res) => {
 };
 
 const show = (req, res) => {
-  db.Post.findOne({ title: req.params.title }, (err, post) => {
+  db.Post.findOne({ _id: req.params._id }, (err, post) => {
     if (err) {
       console.log("Error from show function in postcontroller:", err);
     }

@@ -1,52 +1,106 @@
 import React, { Component } from "react";
+
 import { Link } from "react-router-dom";
-import DeletePost from "../models/deletePost";
-import EditPost from "./EditPost";
-import { Switch, Route, withRouter } from "react-router-dom";
 
 class Post extends Component {
-  // state = {
-  //   post: ""
+  state = {
+    post: "",
+    isEditing: false
+  };
+
+  // onClick = (event) => {
+  //   event.preventDefault();
   // };
 
   render() {
     let username = localStorage.getItem("username");
-    let post = this.props.post;
-    // this.setState({ post });
-    // console.log(this.state.post);
-    return (
-      <div key={post._id} className="post-item">
-        <img src={post.img} />
-        <div className="post-detail">
-          <p>{post.title}</p>
-          <button>
-            <Link className="link" to={`/showpost/${post._id}`}>
-              View Post
-            </Link>
-          </button>
+    let post = this.state.post;
+    let form;
+    if (this.state.isEditing && this.state.post) {
+      form = (
+        <form className="createForm" onSubmit={this.props.onSubmit}>
+          <div className="form-input">
+            <input
+              value={this.state.post.title}
+              ref="title"
+              type="text"
+              placeholder="Title"
+            />
+            <input
+              value={this.state.post.category}
+              ref="category"
+              type="text"
+              placeholder="Category"
+            />
+          </div>
+          <div className="form-input">
+            <input
+              ref="img"
+              type="text"
+              placeholder="Paste image address here"
+              value={this.state.post.img}
+            />
+            <input
+              ref="upvotes_required"
+              type="text"
+              placeholder="Enter the number of Upvotes desired to Create"
+              value={this.state.post.upvotes_required}
+            />
+          </div>
+          <div className="form-text">
+            <textarea
+              placeholder="Description"
+              ref="description"
+              value={this.state.post.description}
+            />
+            <input className="button" type="submit" />
+          </div>
+        </form>
+      );
+    } else {
+      form = <div>Still rendering</div>;
+    }
+    // ###########################################################################
 
-          {username === post.username ? (
-            <button onClick={() => this.props.delete(post._id)}>Delete</button>
-          ) : null}
-          {username === post.username ? (
-            <button value={post.title}>
-              <Link className="link" to={`/editpost/${post._id}`}>
-                Edit
+    if (this.state.isEditing && this.state.post) {
+      post = this.state.post;
+      return (
+        <div>
+          <h1 id="create-title">Show the world your ideas</h1>
+          {form}
+        </div>
+      );
+    } else {
+      return (
+        <div key={this.props.post._id} className="post-item">
+          <img src={this.props.post.img} />
+          <div className="post-detail">
+            <p>{this.props.post.title}</p>
+            <button onClick={this.props.fetchPosts}>
+              <Link className="link" to={`/showpost/${post._id}`}>
+                View Post
               </Link>
             </button>
-          ) : null}
+
+            {username === this.props.post.username ? (
+              <button onClick={() => this.props.delete(post._id)}>
+                Delete
+              </button>
+            ) : null}
+            {username === this.props.post.username ? (
+              <button onClick={this.props.editPost} value={post}>
+                {/*<Link className="link" to={`/editpost/${post._id}`}>*/}
+                Edit
+                {/* </Link>*/}
+              </button>
+            ) : null}
+          </div>
+          <div className="up-arrow">
+            <i className="fas fa-sort-up" />
+          </div>
         </div>
-        <div className="up-arrow">
-          <i className="fas fa-sort-up" />
-        </div>
-        <Switch>
-          <Route
-            path={`/editpost/${post._id}`}
-            render={() => <EditPost post={this.state.post} />}
-          />
-        </Switch>
-      </div>
-    );
+      );
+    }
   }
 }
 

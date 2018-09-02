@@ -1,11 +1,11 @@
 import axios from "axios";
 
 class editPost {
-  static edit(userPost, postId) {
-    console.log("MODEL = ", userPost, postId);
+  static edit(postData, postId) {
+    console.log("MODEL = ", postData, postId);
     let request = axios.put(
       `http://localhost:4000/api/posts/${postId}`,
-      userPost
+      postData
     );
     return request;
   }

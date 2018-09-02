@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import PostContainer from "../containers/PostContainer";
 import Posts from "./Posts";
 
 class Homepage extends Component {
@@ -15,7 +14,7 @@ class Homepage extends Component {
             </Link>
           </button>
         </div>
-        <PostContainer />
+        <Posts />
       </div>
     );
   }

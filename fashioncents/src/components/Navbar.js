@@ -97,7 +97,7 @@ class Navbar extends Component {
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <NavLink className="nav-link" exact to="/">
-                    <i class="fas fa-child" />
+                    <i className="fas fa-child" />
                     FashionCents
                   </NavLink>
                 </li>
@@ -118,7 +118,7 @@ class Navbar extends Component {
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <NavLink className="nav-link" exact to="/">
-                    <i class="fas fa-child" />
+                    <i className="fas fa-child" />
                     FashionCents
                   </NavLink>
                 </li>

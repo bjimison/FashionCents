@@ -4,9 +4,8 @@ import Profile from "./components/Profile";
 import Homepage from "./components/Homepage";
 import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
-import EditPost from "./components/EditPost";
+import Post from "./components/Post";
 import Navbar from "./components/Navbar";
-import PostContainer from "./containers/PostContainer";
 import axios from "axios";
 import Delete from "./models/deletePost";
 import Posts from "./components/Posts";
@@ -102,8 +101,7 @@ class App extends Component {
           />
           <Route path="/profile" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" component={ShowPost} />
-          <Route path="/editpost/:post_id" component={EditPost} />
-          <Route path="/editpost/:post_id" />
+          <Route path="/editpost/:post_id" component={Post} />
           <Route
             exact
             path="/"
