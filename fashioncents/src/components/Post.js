@@ -4,66 +4,81 @@ import { Link } from "react-router-dom";
 
 class Post extends Component {
   state = {
+    isEditing: false,
     post: "",
-    isEditing: false
+    title: "",
+    category: "",
+    img: "",
+    description: "",
+    upvotes_required: ""
   };
 
-  // onClick = (event) => {
-  //   event.preventDefault();
-  // };
+  componentDidMount = () => {
+    this.setState({ post: this.props.post });
+  };
+
+  updateState = () => {
+    this.setState({
+      title: this.state.post.title,
+      category: this.state.post.category,
+      img: this.state.post.img,
+      description: this.state.post.description,
+      upvotes_required: parseInt(this.state.post.upvotes_required)
+    });
+  };
+
+  toggleEdit = event => {
+    event.preventDefault();
+    this.setState({ isEditing: true });
+    this.updateState();
+  };
+
+  // handleChange = event => {
+  //   this.setState({
+  //     title: event.target.value,
+  //     category: event.target.value,
+  //     img: event.target.value,
+  //     description: event.target.value,
+  //     upvotes_required: event.target.value,
+  //   })
+  // }
+
+handleChange = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+        [name]: value
+    });
+}
 
   render() {
     let username = localStorage.getItem("username");
-    let post = this.state.post;
+    let post = this.props.post;
     let form;
-    if (this.state.isEditing && this.state.post) {
-      form = (
-        <form className="createForm" onSubmit={this.props.onSubmit}>
+    if (this.state.isEditing && this.props.post) {
+      form = <form className="createForm" onSubmit={this.props.onSubmit}>
           <div className="form-input">
-            <input
-              value={this.state.post.title}
-              ref="title"
-              type="text"
-              placeholder="Title"
-            />
-            <input
-              value={this.state.post.category}
-              ref="category"
-              type="text"
-              placeholder="Category"
-            />
+            <input name="title" value={this.state.title} ref="title" type="text" placeholder="Title" onChange={this.handleChange} />
+            <input name="category" value={this.state.category} ref="category" type="text" placeholder="Category" onChange={this.handleChange} />
           </div>
           <div className="form-input">
-            <input
-              ref="img"
-              type="text"
-              placeholder="Paste image address here"
-              value={this.state.post.img}
-            />
-            <input
-              ref="upvotes_required"
-              type="text"
-              placeholder="Enter the number of Upvotes desired to Create"
-              value={this.state.post.upvotes_required}
-            />
+            <input name="img" ref="img" type="text" placeholder="Paste image address here" value={this.state.img} onChange={this.handleChange}/>
+            <input name="upvotes_required" ref="upvotes_required" type="text" placeholder="Enter the number of Upvotes desired to Create" value={this.state.upvotes_required} onChange={this.handleChange}/>
           </div>
           <div className="form-text">
-            <textarea
-              placeholder="Description"
-              ref="description"
-              value={this.state.post.description}
-            />
+            <textarea name="description" placeholder="Description" ref="description" value={this.state.description} onChange={this.handleChange}/>
             <input className="button" type="submit" />
           </div>
-        </form>
-      );
+        </form>;
     } else {
       form = <div>Still rendering</div>;
     }
     // ###########################################################################
 
-    if (this.state.isEditing && this.state.post) {
-      post = this.state.post;
+    if (this.state.isEditing) {
+      post = this.props.post;
       return (
         <div>
           <h1 id="create-title">Show the world your ideas</h1>
@@ -88,7 +103,7 @@ class Post extends Component {
               </button>
             ) : null}
             {username === this.props.post.username ? (
-              <button onClick={this.props.editPost} value={this.props.value}>
+              <button onClick={this.toggleEdit} value={this.props.value}>
                 {/*<Link className="link" to={`/editpost/${post._id}`}>*/}
                 Edit
                 {/* </Link>*/}

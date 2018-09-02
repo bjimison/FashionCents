@@ -5,6 +5,10 @@ import axios from "axios";
 import Model from "../models/editPost";
 
 class Posts extends Component {
+  state = {
+    post: ""
+  };
+
   editPost = event => {
     console.log("event.target.value:", event.target.value);
     axios
@@ -12,7 +16,12 @@ class Posts extends Component {
       .then(res => {
         this.setState({ post: res.data, isEditing: true });
       });
-    console.log("event.target.value:", event.target.value);
+    console.log(
+      "event.target.value:",
+      event.target.value,
+      "post:",
+      this.state.post
+    );
   };
 
   fetchPosts = event => {
@@ -50,7 +59,6 @@ class Posts extends Component {
     let posts = this.props.posts.map(post => {
       return (
         <Post
-          value={post._id}
           onSubmit={this.onSubmit}
           fetchPosts={this.fetchPosts}
           editPost={this.editPost}
