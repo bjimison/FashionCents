@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Model from "../models/editPost";
 import { Link } from "react-router-dom";
 
 class Post extends Component {
@@ -33,15 +33,26 @@ class Post extends Component {
     this.updateState();
   };
 
-  // handleChange = event => {
-  //   this.setState({
-  //     title: event.target.value,
-  //     category: event.target.value,
-  //     img: event.target.value,
-  //     description: event.target.value,
-  //     upvotes_required: event.target.value,
-  //   })
-  // }
+  onSubmit = event => {
+    event.preventDefault();
+    let username = localStorage.getItem("username");
+    // let postId = this.props.match.params.post_id;
+    let postId = this.state.post._id;
+    let postData = {
+      title: this.state.title,
+      category: this.state.category,
+      img: this.state.img,
+      description: this.state.description,
+      upvotes_required: parseInt(this.state.upvotes_required),
+      username: username,
+    };
+    console.log("onSubmit: postData=", postData, "postId: ", postId);
+    Model.edit(postData, postId)
+      .then(res => {
+        this.props.history.push("/");
+      })
+      .catch(err => console.log(err));
+  };
 
 handleChange = (event) => {
     const target = event.target;
@@ -58,7 +69,7 @@ handleChange = (event) => {
     let post = this.props.post;
     let form;
     if (this.state.isEditing && this.props.post) {
-      form = <form className="createForm" onSubmit={this.props.onSubmit}>
+      form = <form className="createForm" onSubmit={this.onSubmit}>
           <div className="form-input">
             <input name="title" value={this.state.title} ref="title" type="text" placeholder="Title" onChange={this.handleChange} />
             <input name="category" value={this.state.category} ref="category" type="text" placeholder="Category" onChange={this.handleChange} />
@@ -68,6 +79,7 @@ handleChange = (event) => {
             <input name="upvotes_required" ref="upvotes_required" type="text" placeholder="Enter the number of Upvotes desired to Create" value={this.state.upvotes_required} onChange={this.handleChange}/>
           </div>
           <div className="form-text">
+            <input type="text" placeholder={this.state.post.upvotes} />
             <textarea name="description" placeholder="Description" ref="description" value={this.state.description} onChange={this.handleChange}/>
             <input className="button" type="submit" />
           </div>

@@ -33,28 +33,6 @@ class Posts extends Component {
       });
   };
 
-  onSubmit = event => {
-    event.preventDefault();
-    let username = localStorage.getItem("username");
-    // let postId = this.props.match.params.post_id;
-    let postId = this.state.post._id;
-    let postData = {
-      title: this.refs.title.value,
-      category: this.refs.category.value,
-      img: this.refs.img.value,
-      description: this.refs.description.value,
-      upvotes_required: parseInt(this.refs.upvotes_required.value),
-      username: username
-    };
-    console.log("onSubmit: postData=", postData, "postId: ", postId);
-    Model.edit(postData, postId)
-      .then(res => {
-        console.log(res);
-        this.props.history.push("/");
-      })
-      .catch(err => console.log(err));
-  };
-
   render() {
     let posts = this.props.posts.map(post => {
       return (
