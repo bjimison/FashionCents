@@ -6,23 +6,18 @@ import Model from "../models/editPost";
 
 class Posts extends Component {
   editPost = event => {
-    console.log("event.target.value:", event.target.value._id);
+    console.log("event.target.value:", event.target.value);
     axios
-      .get(`http://localhost:4000/api/posts/${event.target.value._id}`)
+      .get(`http://localhost:4000/api/posts/${event.target.value}`)
       .then(res => {
         this.setState({ post: res.data, isEditing: true });
-
-        console.log(
-          "Edit button clicked: ",
-          this.state.post,
-          this.state.isEditing
-        );
       });
+    console.log("event.target.value:", event.target.value);
   };
 
   fetchPosts = event => {
     axios
-      .get(`http://localhost:4000/api/posts/${event.target.value._id}`)
+      .get(`http://localhost:4000/api/posts/${event.target.value}`)
       .then(res => {
         this.setState({ post: res.data });
         console.log(this.state.post);
@@ -55,6 +50,7 @@ class Posts extends Component {
     let posts = this.props.posts.map(post => {
       return (
         <Post
+          value={post._id}
           onSubmit={this.onSubmit}
           fetchPosts={this.fetchPosts}
           editPost={this.editPost}
