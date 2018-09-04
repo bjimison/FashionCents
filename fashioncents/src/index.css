@@ -3,7 +3,6 @@
 body {
   margin: 0;
   padding: 0;
-  /* font-family: sans-serif; */
   /* font-family: "Markazi Text", serif; */
 }
 
@@ -73,13 +72,27 @@ nav {
   bottom: 0;
 }
 
-#sidebar-list {
+#sidebar-container i {
+  color: gray;
+  margin-left: 93%;
+}
+
+#sidebar-list1 {
   margin-top: 5rem;
   list-style-type: none;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 70%;
+  height: 35%;
+  margin-bottom: 0;
+}
+
+#sidebar-list2 {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 35%;
 }
 
 #sidebar-list li:hover {
