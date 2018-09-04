@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Post from "./Post";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Model from "../models/editPost";
+
 
 class Posts extends Component {
   state = {
@@ -48,7 +48,7 @@ class Posts extends Component {
     });
 
     return (
-      <div>
+      <div id="main-content">
         <div id="search">
           <input type="text" placeholder="Search" />
           {this.props.username ? (

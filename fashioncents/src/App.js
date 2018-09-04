@@ -12,7 +12,7 @@ import Posts from "./components/Posts";
 
 class App extends Component {
   state = {
-    username: "",
+    username:"",
     password: "",
     auth: false,
     posts: []
