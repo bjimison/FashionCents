@@ -18,6 +18,37 @@ body {
   z-index: 999;
 }
 
+.modal-close {
+  width: 50px;
+  align-self: center;
+}
+
+.modal-close:hover {
+  color: #ad0016;
+}
+
+.modal-submit:hover {
+  color: #24C014;
+}
+
+#login-close {
+  margin-bottom: 2.4rem;
+}
+
+.modal-inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+}
+
+.modal-input {
+  width: 50%;
+  height: 2rem;
+  text-align: center;
+  margin: 1rem;
+}
+
 #login-button {
   background-color: #ad0016;
   border: none;
@@ -26,6 +57,12 @@ body {
 #signup-button {
   background-color: #ad0016;
   border: none;
+}
+
+#signup-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .navbar-nav {

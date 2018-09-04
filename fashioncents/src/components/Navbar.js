@@ -21,10 +21,12 @@ class Navbar extends Component {
       width: "50%",
       height: "50%",
       border: "3px solid #ad0016",
-      display: "block"
-      // font_family: "Markazi Text"
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-around",
     }
   };
+
 
   onSubmitLogin = event => {
     event.preventDefault();
@@ -156,11 +158,13 @@ class Navbar extends Component {
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Login</h2>
           <form onSubmit={this.onSubmitLogin} className="registerForm">
-            <input type="text" ref="username" placeholder="Username" />
-            <input type="text" ref="password" placeholder="Password" />
-            <input type="submit" value="Submit" />
+          <div className="modal-inputs">
+            <input className="modal-input" type="text" ref="username" placeholder="Username" />
+            <input className="modal-input" type="text" ref="password" placeholder="Password" />
+            <input className="modal-submit" type="submit" value="Submit" />
+            </div>
           </form>
-          <button onClick={this.closeloginModal}>close</button>
+          <button id="login-close" className="modal-close" onClick={this.closeloginModal}>close</button>
         </Modal>
         <Modal
           style={this.customStyles}
@@ -175,17 +179,17 @@ class Navbar extends Component {
           <p id="exists">
             This Username already exists. Please select another one.
           </p>
-          <form onSubmit={this.onSubmitSignup} className="registerForm">
-            <input type="text" ref="username" placeholder="Username" />
-            <input type="text" ref="password" placeholder="Password" />
-            <input
+          <form id="signup-modal" onSubmit={this.onSubmitSignup} className="registerForm">
+            <input className="modal-input" type="text" ref="username" placeholder="Username" />
+            <input className="modal-input" type="text" ref="password" placeholder="Password" />
+            <input className="modal-input"
               type="text"
               ref="confirmpassword"
               placeholder="Confirm Password"
             />
-            <input type="submit" value="Submit" />
+            <input className="modal-submit" type="submit" value="Submit" />
           </form>
-          <button onClick={this.closesignupModal}>close</button>
+          <button className="modal-close" onClick={this.closesignupModal}>close</button>
         </Modal>
       </div>
     );
