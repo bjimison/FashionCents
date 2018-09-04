@@ -47,19 +47,19 @@ class ShowPost extends Component {
 
   render() {
     return (
-      <div className="post-container">
+      <div className="showpost-container">
         <div className="post-detail-show">
-          <h3 id="title">{this.state.title}</h3>
-          <h5 id="category">{this.state.category}</h5>
+          <h3 id="title">TITLE</h3>
+          <h5 id="category">CATEGORY</h5>
         </div>
         <div className="post-detail-show">
-          <h5 id="creator">{this.state.creator}</h5>
-          <h5 id="upvotes">{this.state.upvotes_required}</h5>
+          <h5 id="creator">CREATOR</h5>
+          <h5 id="upvotes">VOTES</h5>
         </div>
         <div className="post-description-show">
           <img src={this.state.img} />
-          <p>{this.state.description}</p>
-          <div className="up-arrow">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <div id="show-up-arrow">
             <i className="fas fa-sort-up" />
           </div>
           <button onClick={this.handleClick}>Delete</button>

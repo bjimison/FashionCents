@@ -137,7 +137,6 @@ nav {
 }
 
 .main-container {
-  /* width: 80%; */
   margin: 2rem auto;
 }
 
@@ -205,10 +204,15 @@ nav {
   margin: 1rem 2rem;
 }
 
+.post-description-show {
+  text-align: center;
+}
+
 .post-detail-show {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   height: 3rem;
-  width: 80%;
-  margin: 1rem auto;
 }
 
 .post-item {
@@ -229,7 +233,7 @@ nav {
 .fa-sort-up {
   padding: 1rem;
   color: green;
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
 .up-arrow {
@@ -238,6 +242,16 @@ nav {
   margin-left: 1rem;
   align-self: center;
   text-align: center;
+}
+
+.showpost-container {
+  display: flex;
+  flex-direction: column;
+  margin: 7rem 8rem;
+}
+
+.showpost-container button {
+  width: 10%;
 }
 
 /* ####################### Links ####################### */
