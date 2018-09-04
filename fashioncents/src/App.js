@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
-import Sidebar from "./components/Sidebar";
 import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
 import Post from "./components/Post";
@@ -9,6 +8,7 @@ import Navbar from "./components/Navbar";
 import axios from "axios";
 import Delete from "./models/deletePost";
 import Posts from "./components/Posts";
+
 
 class App extends Component {
   state = {
@@ -33,11 +33,20 @@ class App extends Component {
     this.setState({ posts: posts });
   };
 
+  editPost = updatedPost => {
+    let posts = this.state.posts;
+    var index = posts.findIndex(p => p._id === updatedPost._id);
+    posts[index] = updatedPost;
+    console.log('in edit Post', posts);
+    this.setState({
+      posts: posts
+    })
+  }
+
   deletePost = post_id => {
     Delete.delete(post_id).then(res => {
       let posts = this.state.posts;
       posts.map((post, index) => {
-        console.log(index);
         if (post._id === res.data._id) {
           posts.splice(index, 1);
         }
@@ -46,6 +55,7 @@ class App extends Component {
       this.setState({
         posts: posts
       });
+      this.props.history.push('/')
     });
   };
 
@@ -83,6 +93,24 @@ class App extends Component {
     });
   }
 
+  search = (search) => {
+     console.log(search)
+    if(search.length > 2){
+      let posts = [];
+    // posts.filter(post => post.title.toLowerCase() === search.toLowerCase())
+    this.state.posts.forEach(post => {
+     
+      if(post.title.toLowerCase() === search.toLowerCase()){
+        posts.push(post)
+        console.log('match',posts)
+      }
+    })
+    // console.log(posts)
+    this.setState({ posts: posts });
+    }
+    
+  }
+
   render() {
     // let username = localStorage.getItem("username");
 
@@ -101,7 +129,9 @@ class App extends Component {
             render={props => <CreatePost addPost={this.addPost} {...props} />}
           />
           <Route path="/profile" render={props => <Profile {...props} />} />
-          <Route path="/showpost/:post_id" component={ShowPost} />
+          <Route path="/showpost/:post_id" 
+            render={
+              props => (<ShowPost deletePost={this.deletePost} {...props}/>)}/>
           <Route path="/editpost/:post_id" component={Post} />
           <Route
             exact
@@ -111,6 +141,8 @@ class App extends Component {
                 delete={this.deletePost}
                 posts={this.state.posts}
                 username={this.state.username}
+                editPost={this.editPost}
+                search={this.search}
                 {...props}
               />
             )}

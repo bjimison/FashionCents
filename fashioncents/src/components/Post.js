@@ -46,10 +46,12 @@ class Post extends Component {
       upvotes_required: parseInt(this.state.upvotes_required),
       username: username,
     };
-    console.log("onSubmit: postData=", postData, "postId: ", postId);
+    // console.log("onSubmit: postData=", postData, "postId: ", postId);
     Model.edit(postData, postId)
       .then(res => {
-        this.props.history.push("/");
+        this.props.editPost(res.data);
+        // this.props.history.push("/");
+        this.setState({ isEditing: false });
       })
       .catch(err => console.log(err));
   };

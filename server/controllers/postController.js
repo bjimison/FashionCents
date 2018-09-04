@@ -21,11 +21,11 @@ const index = (req, res) => {
 };
 
 const show = (req, res) => {
-  db.Post.findOne({ _id: req.params._id }, (err, post) => {
+  db.Post.findById(req.params.post_id, (err, foundPost) => {
     if (err) {
       console.log("Error from show function in postcontroller:", err);
     }
-    res.status(200).json(post);
+    res.status(200).json(foundPost);
   });
 };
 

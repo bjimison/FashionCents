@@ -7,30 +7,23 @@ import axios from "axios";
 
 class Posts extends Component {
   state = {
-    post: ""
+    post: "",
+    search:''
   };
-
-  editPost = event => {
-    console.log("event.target.value:", event.target.value);
-    axios
-      .get(`http://localhost:4000/api/posts/${event.target.value}`)
-      .then(res => {
-        this.setState({ post: res.data, isEditing: true });
-      });
-    console.log(
-      "event.target.value:",
-      event.target.value,
-      "post:",
-      this.state.post
-    );
-  };
+ 
+  handleSearch = (event) => {
+    console.log(event.target.value);
+    this.setState({search: event.target.value})
+    if(event.target.value.length > 2){
+      this.props.search(event.target.value);
+    }
+  }
 
   fetchPosts = event => {
     axios
       .get(`http://localhost:4000/api/posts/${event.target.value}`)
       .then(res => {
         this.setState({ post: res.data });
-        console.log(this.state.post);
       });
   };
 
@@ -40,7 +33,7 @@ class Posts extends Component {
         <Post
           onSubmit={this.onSubmit}
           fetchPosts={this.fetchPosts}
-          editPost={this.editPost}
+          editPost={this.props.editPost}
           key={post._id}
           post={post}
           delete={this.props.delete}
@@ -53,7 +46,7 @@ class Posts extends Component {
       <Sidebar />
       <div id="main-content">
         <div id="search">
-          <input type="text" placeholder="Search" />
+          <input type="text" placeholder="Search" value={this.state.search} onChange={this.handleSearch}/>
           {this.props.username ? (
             <button>
               <Link className="link" to="/createpost">

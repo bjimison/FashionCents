@@ -6,7 +6,7 @@ class Sidebar extends Component {
        let e = document.getElementById('sidebar-container');
         let right_arrow = document.getElementById('right-arrow');
         let posts = document.querySelector(".posts");
-       if(e.style.display == 'inline-block'){
+       if(e.style.display === 'inline-block'){
           e.style.display = 'none';
         right_arrow.style.display = 'inline-block';
         posts.style.width = '98%';
