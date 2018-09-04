@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Post from "./Post";
+import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -48,6 +49,8 @@ class Posts extends Component {
     });
 
     return (
+      <div>
+      <Sidebar />
       <div id="main-content">
         <div id="search">
           <input type="text" placeholder="Search" />
@@ -62,6 +65,7 @@ class Posts extends Component {
         <div>
           <div className="posts">{posts}</div>
         </div>
+      </div>
       </div>
     );
   }

@@ -88,7 +88,7 @@ nav {
   color: gray;
   position: fixed;
   display: none;
-  top: 46%;
+  top: 51%;
 }
 
 #right-arrow:hover, #left-arrow:hover {
@@ -96,7 +96,7 @@ nav {
 }
 
 #sidebar-list1 {
-  margin-top: 5rem;
+  margin-top: 7rem;
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -113,7 +113,7 @@ nav {
   height: 35%;
 }
 
-#sidebar-list li:hover {
+#sidebar-container li:hover {
   color: #ad0016;
 }
 
@@ -298,4 +298,9 @@ nav {
 
 #create-title {
   text-align: center;
+}
+
+/* ############################# MEDIA QUERIES ############################## */
+@media screen (min-width: 760px){
+ 
 }

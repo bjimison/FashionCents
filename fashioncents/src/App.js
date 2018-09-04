@@ -12,7 +12,7 @@ import Posts from "./components/Posts";
 
 class App extends Component {
   state = {
-    username:"",
+    username: "",
     password: "",
     auth: false,
     posts: []
@@ -94,7 +94,7 @@ class App extends Component {
           setAuth={this.setAuth}
           logout={this.logout}
         />
-        <Sidebar />
+        
         <Switch>
           <Route
             path="/createpost"

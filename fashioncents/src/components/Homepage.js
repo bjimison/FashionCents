@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Posts from "./Posts";
 
 class Homepage extends Component {
+
+  
   render() {
     return (
       <div>
