@@ -72,9 +72,27 @@ nav {
   bottom: 0;
 }
 
-#sidebar-container i {
+#arrows {
+  display: flex;
+  flex-direction: row;
+}
+
+#left-arrow {
   color: gray;
-  margin-left: 93%;
+  position: fixed;
+  left: 14%;
+  display: inline-block;
+}
+
+#right-arrow {
+  color: gray;
+  position: fixed;
+  display: none;
+  top: 46%;
+}
+
+#right-arrow:hover, #left-arrow:hover {
+  color: #ad0016;
 }
 
 #sidebar-list1 {
