@@ -5,7 +5,6 @@ body {
   padding: 0;
   /* font-family: sans-serif; */
   /* font-family: "Markazi Text", serif; */
-  background-color: #F7F7F7;
 }
 
 * {
@@ -13,6 +12,13 @@ body {
 }
 
 /* ############################# NAV ############################### */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+}
+
 #login-button {
   background-color: #ad0016;
   border: none;
@@ -56,6 +62,31 @@ nav {
   margin: 0 0.4rem;
 }
 
+/* ######################### SIDEBAR ################################# */
+
+#sidebar-container {
+  display: inline-block;
+  width: 15%;
+  background-color: #F7F7F7;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+}
+
+#sidebar-list {
+  margin-top: 5rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 70%;
+}
+
+#sidebar-list li:hover {
+  color: #ad0016;
+}
+
+
 /* ######################## HOMEPAGE ################################# */
 
 #login {
@@ -71,7 +102,7 @@ nav {
 #search {
   align-self: center;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 6rem;
 }
 
 .main-container {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Profile from "./components/Profile";
-import Homepage from "./components/Homepage";
+import Sidebar from "./components/Sidebar";
 import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
 import Post from "./components/Post";
@@ -94,6 +94,7 @@ class App extends Component {
           setAuth={this.setAuth}
           logout={this.logout}
         />
+        <Sidebar />
         <Switch>
           <Route
             path="/createpost"

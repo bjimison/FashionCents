@@ -92,7 +92,7 @@ class Navbar extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-          <div className="collapese navbar-collapse" id="navigation">
+          <div className="collapse navbar-collapse" id="navigation">
             {this.props.auth ? (
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
