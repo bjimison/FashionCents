@@ -119,7 +119,7 @@ nav {
 }
 
 .post-item img {
-  height: 95%;
+  height: 70px;
 }
 
 .post-description {
@@ -149,7 +149,6 @@ nav {
   border: 1px solid black;
   margin: 1rem 1rem;
   padding: 1rem;
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
