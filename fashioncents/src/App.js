@@ -5,9 +5,12 @@ import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
 import Post from "./components/Post";
 import Navbar from "./components/Navbar";
+import Sidebar from "./components/Sidebar";
 import axios from "axios";
 import Delete from "./models/deletePost";
 import Posts from "./components/Posts";
+import Model from "./models/getPostByCategory";
+
 
 
 class App extends Component {
@@ -15,14 +18,15 @@ class App extends Component {
     username: "",
     password: "",
     auth: false,
-    posts: []
+    posts: [],
+    post_category: ""
   };
 
   // history = createHistory(this.props);
 
   componentDidMount = () => {
     axios.get("http://localhost:4000/api/posts").then(res => {
-      // console.log(res.data);
+      console.log(res.data);
       this.setState({ posts: res.data });
     });
   };
@@ -108,12 +112,23 @@ class App extends Component {
     // console.log(posts)
     this.setState({ posts: posts });
     }
-    
+}
+
+  categorySelect = event => {
+        // event.preventDefault();
+      let post_category = event.target.id.toLowerCase();
+      console.log(post_category)
+      Model.getCategory(post_category)
+       .then(res => {
+         console.log('Category res', res)
+         res = res.data
+        this.setState({ posts: res });
+      });
   }
+
 
   render() {
     // let username = localStorage.getItem("username");
-
     return (
       <div className="App">
         <Navbar
@@ -127,11 +142,13 @@ class App extends Component {
             path="/createpost"
             render={props => <CreatePost addPost={this.addPost} {...props} />}
           />
+          {/* <Route render={() => <Sidebar categorySelect={this.categorySelect} />} /> */}
           <Route path="/user/:username" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" 
             render={
               props => (<ShowPost deletePost={this.deletePost} {...props}/>)}/>
           <Route path="/editpost/:post_id" component={Post} />
+          <Route path="/posts/:post_category" component={Posts} />
           <Route
             exact
             path="/"
@@ -142,6 +159,7 @@ class App extends Component {
                 username={this.state.username}
                 editPost={this.editPost}
                 search={this.search}
+                categorySelect={this.categorySelect}
                 {...props}
               />
             )}

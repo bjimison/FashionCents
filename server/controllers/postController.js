@@ -30,11 +30,13 @@ const show = (req, res) => {
 };
 
 const getByCategory = (req, res) => {
-  db.Post.findOne({ category: req.params.category }, (err, posts) => {
+  db.Post.find({ category: req.params.post_category }, (err, posts) => {
     if (err) {
       console.log("error from getByCategory in post contoller:", err);
     }
+    console.log('controller function response:', posts)
     res.status(200).json(posts);
+    
   });
 };
 

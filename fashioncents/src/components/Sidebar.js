@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { NavLink } from "react-router-dom";
+
 
 class Sidebar extends Component {
 
@@ -9,8 +11,9 @@ class Sidebar extends Component {
        if(e.style.display === 'inline-block'){
           e.style.display = 'none';
         right_arrow.style.display = 'inline-block';
-        posts.style.width = '98%';
-        posts.style.margin_left = '0';
+        posts.style.width = '94%';
+        posts.style.marginRight = '3%';
+        posts.style.marginLeft = '3%';
       } else {
           e.style.display = 'inline-block';
           right_arrow.style.display = 'none';
@@ -23,15 +26,19 @@ class Sidebar extends Component {
             <div>
             <div id="sidebar-container">
             <ul id="sidebar-list1">
-            <li>Hats</li>
-            <li>Jackets</li>
+            <li><span onClick={this.props.categorySelect} id="Hats" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                    Hats</span></li>
+            <li><span onClick={this.props.categorySelect} id="Jackets" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                    Jackets</span></li>
             </ul>
             <div id="arrows">
             <i id="left-arrow" className="fas fa-chevron-circle-left" onClick={this.toggle_visibility}></i>
             </div>
             <ul id="sidebar-list2">
-            <li>Shirts</li>
-            <li>Pants</li>
+            <li><span onClick={this.props.categorySelect} id="Shirts" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                    Shirts</span></li>
+            <li><span onClick={this.props.categorySelect} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                    Pants</span></li>
             </ul>
             </div>
         <i id="right-arrow" className="fas fa-chevron-circle-right" onClick={this.toggle_visibility}></i>

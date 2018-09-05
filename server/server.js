@@ -21,6 +21,7 @@ app.post("/api/posts/create", controllers.post.create);
 app.get("/api/users/:username", controllers.user.show);
 app.get("/api/posts", controllers.post.index);
 app.get("/api/posts/:post_id", controllers.post.show);
+app.get("/api/posts/category/:post_category", controllers.post.getByCategory);
 app.get("/api/users", controllers.user.index);
 
 

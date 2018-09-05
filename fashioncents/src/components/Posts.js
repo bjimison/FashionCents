@@ -19,15 +19,8 @@ class Posts extends Component {
     }
   }
 
-  fetchPosts = event => {
-    axios
-      .get(`http://localhost:4000/api/posts/${event.target.value}`)
-      .then(res => {
-        this.setState({ post: res.data });
-      });
-  };
-
   render() {
+    console.log('Posts ', this.props.posts)
     let posts = this.props.posts.map(post => {
       return (
         <Post
@@ -43,7 +36,7 @@ class Posts extends Component {
 
     return (
       <div>
-      <Sidebar />
+      <Sidebar categorySelect={this.props.categorySelect} posts={this.props.posts} />
       <div id="main-content">
         <div id="search">
           <input type="text" placeholder="Search" value={this.state.search} onChange={this.handleSearch}/>
