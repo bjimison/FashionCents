@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Model from "../models/createPost";
+import axios from "axios";
 
 class CreatePost extends Component {
   onSubmit = event => {
@@ -19,6 +20,7 @@ class CreatePost extends Component {
         console.log("request to create post failed");
       }
     });
+    axios.get("http://localhost:4000/api/posts/");
     this.props.history.push("/");
   };
 
