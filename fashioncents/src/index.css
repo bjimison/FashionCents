@@ -16,6 +16,7 @@ body {
   width: 100%;
   top: 0;
   z-index: 999;
+  height: 9%;
 }
 
 .modal-close {
@@ -133,6 +134,7 @@ nav {
 }
 
 #sidebar-list1 {
+  font-size: 14px;
   margin-top: 7rem;
   list-style-type: none;
   display: flex;
@@ -140,9 +142,13 @@ nav {
   justify-content: space-around;
   height: 35%;
   margin-bottom: 0;
+  text-align: left;
+  margin-right: 2rem;
 }
 
 #sidebar-list2 {
+  text-align: center;
+  font-size: 14px;
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -358,6 +364,57 @@ nav {
 }
 
 /* #############################  MEDIA QUERIES  ############################## */
-@media screen (max-width: 760px){
+@media only screen and (max-width: 860px){
+  * {
+    font-size: 14px;
+  }
 
+  #sidebar-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #F7F7F7;
+  position: fixed;
+  top: 7%;
+  height: 6%;
+  bottom: 90%;
+}
+
+#main-content {
+  margin-top: 10rem;
+}
+
+#sidebar-list1 {
+  margin-top: 1rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 5%;
+  margin-bottom: 2rem;
+  width: 40%;
+}
+
+#sidebar-list2 {
+  margin-top: 1rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 5%;
+  margin-bottom: 2rem;
+  width: 40%;
+}
+
+#right-arrow, #left-arrow {
+  display: none;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  height: 7%;
+}
 }
