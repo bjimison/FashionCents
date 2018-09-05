@@ -108,7 +108,7 @@ class Navbar extends Component {
                 </li>
                 <div id="login">
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/user/:user_id">
+                    <NavLink className="nav-link" to={`/user/${localStorage.getItem("username")}`}>
                       Hello, {this.props.username}
                     </NavLink>
                   </li>

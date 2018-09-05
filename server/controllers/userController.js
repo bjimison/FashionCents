@@ -53,7 +53,7 @@ const updateProfile = (req, res) => {
 };
 
 const show = (req, res) => {
-  db.User.findById(req.params.user_id, (err, foundUser) => {
+  db.User.find({username: req.params.username}, (err, foundUser) => {
     if (err) {
       console.log("Error from profile in user controller:", err);
     }

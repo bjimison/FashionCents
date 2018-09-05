@@ -127,7 +127,7 @@ class App extends Component {
             path="/createpost"
             render={props => <CreatePost addPost={this.addPost} {...props} />}
           />
-          <Route path="/user/:user_id" render={props => <Profile {...props} />} />
+          <Route path="/user/:username" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" 
             render={
               props => (<ShowPost deletePost={this.deletePost} {...props}/>)}/>

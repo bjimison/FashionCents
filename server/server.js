@@ -18,7 +18,7 @@ app.post("/api/users/:username/update", controllers.user.updateProfile);
 app.post("/api/posts/create", controllers.post.create);
 
 // GET
-app.get("/api/users/:user_id", controllers.user.show);
+app.get("/api/users/:username", controllers.user.show);
 app.get("/api/posts", controllers.post.index);
 app.get("/api/posts/:post_id", controllers.post.show);
 app.get("/api/users", controllers.user.index);

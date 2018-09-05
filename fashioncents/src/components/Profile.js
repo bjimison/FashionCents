@@ -2,30 +2,39 @@ import React, { Component } from "react";
 import Model from "../models/profile";
 
 class Profile extends Component {
-  // componentDidMount() {
-  //   console.log("component did mount");
-  //   let username;
-  //   if (localStorage.getItem("username") === null) {
-  //     return this.props.history.push("/");
-  //   } else {
-  //     username = localStorage.getItem("username");
-  //   }
+  state = {
+    user: ""
+  }
 
-  //   let user_id = 
-  //   Model.profile(user_id).then(res => {
-  //     // console.log("profile response", res.data);
-  //     this.setState({
-  //       user_id: res.data._id
-  //     });
-  //   });
-  // }
+  componentDidMount() {
+    console.log("component did mount");
+    let username;
+    if (localStorage.getItem("username") === null) {
+      return this.props.history.push("/");
+    } else {
+      username = localStorage.getItem("username");
+    }
+  
 
-  render() {
+  if(username){
+    Model.profile(username).then(res => {
+      console.log("profile response", res.data);
+      let user = res.data[0]
+      this.setState({
+        user
+      })
+      console.log("RES.DATA from Profile.js:", this.state.user)
+      })
+    }
+  }
+  
+
+  render(){
     return (
       <div>
-        <h1>Profile Page</h1>
+        <h1> Hello, ${this.state.user.username}</h1>
       </div>
-    );
+    )
   }
 }
 
