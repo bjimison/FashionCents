@@ -25,24 +25,25 @@ class Sidebar extends Component {
         return(
             <div>
             <div id="sidebar-container">
-            <ul id="sidebar-list1">
-            <li><span onClick={this.props.categorySelect} id="Hats" className="nav-item" to={`/posts/${this.props.post_category}`}>
+            <ul id="sidebar-list">
+                <li><span onClick={this.props.categorySelect} id="Hats" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Hats</span></li>
-            <li><span onClick={this.props.categorySelect} id="Jackets" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                <li><span onClick={this.props.categorySelect} id="Jackets" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Jackets</span></li>
-            </ul>
-            <div id="arrows">
-            <i id="left-arrow" className="fas fa-chevron-circle-left" onClick={this.toggle_visibility}></i>
-            </div>
-            <ul id="sidebar-list2">
-            <li><span onClick={this.props.categorySelect} id="Shirts" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                <li><span onClick={this.props.categorySelect} id="Shirts" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Shirts</span></li>
-            <li><span onClick={this.props.categorySelect} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                <li><span onClick={this.props.categorySelect} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Pants</span></li>
+                <li><span onClick={this.props.getAllPosts} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                    All</span></li>
             </ul>
             </div>
-        <i id="right-arrow" className="fas fa-chevron-circle-right" onClick={this.toggle_visibility}></i>
+        
+            <div id="arrows">
+                <i id="right-arrow" className="fas fa-chevron-circle-right" onClick={this.toggle_visibility}></i>
+                <i id="left-arrow" className="fas fa-chevron-circle-left" onClick={this.toggle_visibility}></i>
             </div>
+        </div>
         )}
 }
 

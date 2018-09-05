@@ -137,27 +137,17 @@ nav {
   color: #ad0016;
 }
 
-#sidebar-list1 {
+#sidebar-list {
   font-size: 14px;
-  margin-top: 7rem;
+  margin-top: 4rem;
   list-style-type: none;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 35%;
+  height: 100%;
   margin-bottom: 0;
   text-align: left;
   margin-right: 2rem;
-}
-
-#sidebar-list2 {
-  text-align: center;
-  font-size: 14px;
-  list-style-type: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 35%;
 }
 
 #sidebar-container li:hover {
@@ -392,7 +382,7 @@ nav {
   margin-top: 10rem;
 }
 
-#sidebar-list1 {
+#sidebar-list {
   margin-top: 1rem;
   list-style-type: none;
   display: flex;
@@ -400,18 +390,7 @@ nav {
   justify-content: space-around;
   height: 5%;
   margin-bottom: 2rem;
-  width: 40%;
-}
-
-#sidebar-list2 {
-  margin-top: 1rem;
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 5%;
-  margin-bottom: 2rem;
-  width: 40%;
+  width: 80%;
 }
 
 #right-arrow, #left-arrow {

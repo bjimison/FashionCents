@@ -36,7 +36,7 @@ class Posts extends Component {
 
     return (
       <div>
-      <Sidebar categorySelect={this.props.categorySelect} posts={this.props.posts} />
+      <Sidebar getAllPosts={this.props.getAllPosts} categorySelect={this.props.categorySelect} posts={this.props.posts} />
       <div id="main-content">
         <div id="search">
           <input type="text" placeholder="Search" value={this.state.search} onChange={this.handleSearch}/>

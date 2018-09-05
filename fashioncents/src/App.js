@@ -24,11 +24,15 @@ class App extends Component {
 
   // history = createHistory(this.props);
 
-  componentDidMount = () => {
-    axios.get("http://localhost:4000/api/posts").then(res => {
+getAllPosts = () => {
+  axios.get("http://localhost:4000/api/posts").then(res => {
       console.log(res.data);
       this.setState({ posts: res.data });
     });
+}
+
+  componentDidMount = () => {
+    this.getAllPosts();
   };
 
   addPost = newPost => {
@@ -154,6 +158,7 @@ class App extends Component {
             path="/"
             render={props => (
               <Posts
+                getAllPosts={this.getAllPosts}
                 delete={this.deletePost}
                 posts={this.state.posts}
                 username={this.state.username}
