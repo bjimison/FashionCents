@@ -31,8 +31,9 @@ class Profile extends Component {
 
   render(){
     return (
-      <div>
-        <h1> Hello, ${this.state.user.username}</h1>
+      <div id="profile">
+        <h1> Hello, {this.state.user.username}</h1>
+        <h3>This is your Profile Page</h3> 
       </div>
     )
   }
