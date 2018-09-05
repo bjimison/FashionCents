@@ -7,16 +7,6 @@ class ShowPost extends Component {
     post: {}
   };
 
-  // handleClick = event => {
-  //   let title = event.target.title;
-  //   Model.delete(title).then(res => {
-  //     this.setState({
-  //       deleted: this.state.deleted.push(res)
-  //     });
-  //     console.log("in handle click for delete post button: ", res);
-  //   });
-  // };
-
   componentDidMount = () => {
     // let username = localStorage.getItem("username");
     let postId = this.props.match.params.post_id;

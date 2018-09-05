@@ -68,7 +68,7 @@ class App extends Component {
   };
 
   logout = () => {
-    if (localStorage.getItem("username") != null) {
+    if (localStorage.getItem("username") !== null) {
       localStorage.removeItem("username");
     }
     this.setState({
@@ -80,7 +80,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    if (localStorage.getItem("username") != null) {
+    if (localStorage.getItem("username") !== null) {
       this.setState({
         auth: true,
         username: localStorage.getItem("username"),
@@ -122,13 +122,12 @@ class App extends Component {
           setAuth={this.setAuth}
           logout={this.logout}
         />
-        
         <Switch>
           <Route
             path="/createpost"
             render={props => <CreatePost addPost={this.addPost} {...props} />}
           />
-          <Route path="/profile" render={props => <Profile {...props} />} />
+          <Route path="/user/:user_id" render={props => <Profile {...props} />} />
           <Route path="/showpost/:post_id" 
             render={
               props => (<ShowPost deletePost={this.deletePost} {...props}/>)}/>

@@ -18,19 +18,19 @@ app.post("/api/users/:username/update", controllers.user.updateProfile);
 app.post("/api/posts/create", controllers.post.create);
 
 // GET
-app.get("/api/users/:username/profile", controllers.user.profile);
+app.get("/api/users/:user_id", controllers.user.show);
 app.get("/api/posts", controllers.post.index);
 app.get("/api/posts/:post_id", controllers.post.show);
 app.get("/api/users", controllers.user.index);
-// app.get("/api/posts/:title", controllers.post.show);
-// app.get("/api/posts/:category", controllers.post.getByCategory);
+
 
 // PUT
 app.put("/api/posts/:post_id", controllers.post.edit);
 // DELETE
 app.delete("/api/posts/:post_id", controllers.post.destroy);
 
-// listen on the port that Heroku prescribes (process.env.PORT) OR port 3000
+
+
 app.listen(process.env.PORT || 4000, () => {
   console.log("Express server is up and running on http://localhost:4000/");
 });

@@ -1,26 +1,24 @@
 import React, { Component } from "react";
 import Model from "../models/profile";
-import Homepage from "./Homepage";
 
 class Profile extends Component {
-  componentDidMount() {
-    console.log("component did mount");
-    let username;
-    if (localStorage.getItem("username") === null) {
-      return this.props.history.push("/Homepage");
-    } else {
-      username = localStorage.getItem("username");
-    }
+  // componentDidMount() {
+  //   console.log("component did mount");
+  //   let username;
+  //   if (localStorage.getItem("username") === null) {
+  //     return this.props.history.push("/");
+  //   } else {
+  //     username = localStorage.getItem("username");
+  //   }
 
-    Model.profile(username).then(res => {
-      console.log("profile response", res.data);
-      this.setState({
-        username: res.data.username,
-        profile_pic: res.data.profile_pic,
-        email: res.data.email
-      });
-    });
-  }
+  //   let user_id = 
+  //   Model.profile(user_id).then(res => {
+  //     // console.log("profile response", res.data);
+  //     this.setState({
+  //       user_id: res.data._id
+  //     });
+  //   });
+  // }
 
   render() {
     return (

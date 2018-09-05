@@ -52,8 +52,8 @@ const updateProfile = (req, res) => {
   });
 };
 
-const profile = (req, res) => {
-  db.User.findOne({ username: req.params.username }, (err, foundUser) => {
+const show = (req, res) => {
+  db.User.findById(req.params.user_id, (err, foundUser) => {
     if (err) {
       console.log("Error from profile in user controller:", err);
     }
@@ -73,5 +73,5 @@ module.exports = {
   signup: signup,
   login: login,
   updateProfile: updateProfile,
-  profile: profile
+  show: show
 };

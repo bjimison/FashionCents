@@ -63,7 +63,7 @@ class Navbar extends Component {
           );
           this.props.setAuth(res.data.username);
           this.closesignupModal();
-          //   this.props.history.push("/profile");
+            // this.props.history.push("/profile");
         })
         .catch(err => {
           console.log("In Catch from signup", err);
@@ -91,6 +91,9 @@ class Navbar extends Component {
   };
 
   render() {
+
+    // let user_id = this.props.match.params.user_id;
+
     return (
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
@@ -105,7 +108,7 @@ class Navbar extends Component {
                 </li>
                 <div id="login">
                   <li className="nav-item">
-                    <NavLink className="nav-link" to="/profile">
+                    <NavLink className="nav-link" to="/user/:user_id">
                       Hello, {this.props.username}
                     </NavLink>
                   </li>
