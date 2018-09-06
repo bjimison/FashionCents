@@ -292,25 +292,46 @@ nav {
   width: 10%;
 }
 
-/* ####################### Links ####################### */
-
-.link {
-  text-decoration: none;
+/* ########################### EDIT POST ################################# */
+#edit-textarea {
+  width: 70%;
 }
 
-.link:hover {
-  color: gray;
+.editForm {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.editForm textarea {
+  height: 200px;
+  width: 80%;
+  margin: 1rem;
+}
+
+.editForm input {
+  height: 2rem;
+  margin: 1rem;
+  width: 200px;
 }
 
 /* ####################### Create Post Form ######################## */
 .createForm {
+  display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: space-around;
+}
+
+#createpost-container {
+  margin-top: 7rem;
 }
 
 .createForm input {
   height: 2rem;
   margin: 1rem;
+  width: 200px;
 }
 
 .form-input {
@@ -322,6 +343,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 1.5rem;
 }
 
 .button {
@@ -338,13 +360,9 @@ nav {
   color: gray;
 }
 
-.createForm input {
-  width: 200px;
-}
-
 .createForm textarea {
   height: 200px;
-  width: 600px;
+  width: 80%;
   margin: 1rem;
 }
 
@@ -355,6 +373,16 @@ nav {
 /* ##############################  PROFILE PAGE  ############################# */
 #profile {
   margin: 7rem 3rem 3rem 3rem;
+}
+
+/* ####################### Links ####################### */
+
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  color: gray;
 }
 
 /* #############################  MEDIA QUERIES  ############################## */
@@ -404,4 +432,18 @@ nav {
   z-index: 999;
   height: 7%;
 }
+
+.editForm input {
+  height: 1.4rem;
+  margin: 0.7rem;
+  width: 150px;
+}
+
+.edit-form-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: .5rem;
+}
+
 }

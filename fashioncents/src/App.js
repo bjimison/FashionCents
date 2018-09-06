@@ -26,7 +26,6 @@ class App extends Component {
 
 getAllPosts = () => {
   axios.get("http://localhost:4000/api/posts").then(res => {
-      console.log(res.data);
       this.setState({ posts: res.data });
     });
 }

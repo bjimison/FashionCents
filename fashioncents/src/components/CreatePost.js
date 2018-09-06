@@ -14,7 +14,6 @@ class CreatePost extends Component {
       upvotes_required: parseInt(this.refs.upvotes_required.value),
       username: localStorage.getItem("username")
     }).then(res => {
-      console.log("creating", res.data);
       this.props.addPost(res.data);
       if (res.status === 404) {
         console.log("request to create post failed");
@@ -26,7 +25,7 @@ class CreatePost extends Component {
 
   render() {
     return (
-      <div>
+      <div id="createpost-container">
         <h1 id="create-title">Show the world your ideas</h1>
         <form className="createForm" onSubmit={this.onSubmit}>
           <div className="form-input">

@@ -12,7 +12,6 @@ class Posts extends Component {
   };
  
   handleSearch = (event) => {
-    console.log(event.target.value);
     this.setState({search: event.target.value})
     if(event.target.value.length > 2){
       this.props.search(event.target.value);
@@ -20,7 +19,6 @@ class Posts extends Component {
   }
 
   render() {
-    console.log('Posts ', this.props.posts)
     let posts = this.props.posts.map(post => {
       return (
         <Post
