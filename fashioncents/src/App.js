@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, withRouter, Link } from "react-router-dom";
 import Profile from "./components/Profile";
 import CreatePost from "./components/CreatePost";
 import ShowPost from "./components/ShowPost";
@@ -51,7 +51,6 @@ getAllPosts = () => {
     let posts = this.state.posts;
     var index = posts.findIndex(p => p._id === updatedPost._id);
     posts[index] = updatedPost;
-    console.log('in edit Post', posts);
     this.setState({
       posts: posts
     })
@@ -115,10 +114,8 @@ getAllPosts = () => {
 
   categorySelect = event => {
       let post_category = event.target.id.toLowerCase();
-      console.log(post_category)
       Model.getCategory(post_category)
        .then(res => {
-         console.log('Category res', res)
          res = res.data
         this.setState({ posts: res });
       });
@@ -134,7 +131,17 @@ getAllPosts = () => {
           setAuth={this.setAuth}
           logout={this.logout}
         />
+        <div className="search">
         <input id="search-box" type="text" placeholder="Search" value={this.state.search} onChange={this.search}/>
+        
+          {this.state.username ? (
+            <button id="search-button">
+              <Link to="/createpost">
+                Post Your Creation
+              </Link>
+            </button>
+          ) : null}
+        </div>
         <Switch>
           <Route
             path="/createpost"

@@ -168,11 +168,13 @@ nav {
   color: #ad0016;
 }
 
-#search {
+.search {
   align-self: center;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   margin-top: 6rem;
-  margin-left: 10rem;
+  margin-left: 10%;
 }
 
 .main-container {
@@ -191,33 +193,35 @@ nav {
   width: 110px;
 }
 
-#search-box {
-  margin-left: 25%;
-  margin-top: 10%;
+#search-button {
+  margin-left: 3%;
+  width: 250px;
+  height: 2rem;
+  text-decoration: none;
 }
 
-#search input {
+a {
+  text-decoration: none;
+}
+
+#search-box {
+  margin-right: 3%;
   border: 1px solid gray;
   border-radius: 2px;
   width: 250px;
   height: 2rem;
-  margin: 0 1rem;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
 }
 
-#search-button {
-  margin-left: 55%;
-  margin-top: -2%;
-  
-}
-
 #search button:hover {
   font-style: #ad0016;
 }
+
 /* ######################## POSTS #################################### */
+
 .posts {
   height: 20%;
   width: 82%;
@@ -411,7 +415,7 @@ nav {
   }
 
   #sidebar-container {
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   width: 100%;
   background-color: #F7F7F7;
@@ -432,7 +436,7 @@ nav {
 #sidebar-list {
   margin-top: 1rem;
   list-style-type: none;
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   justify-content: space-around;
   height: 5%;
@@ -440,8 +444,8 @@ nav {
   width: 80%;
 }
 
-#right-arrow, #left-arrow {
-  display: none;
+ #right-arrow, #left-arrow {
+  display: none !important ;
 }
 
 .navbar {
@@ -463,6 +467,11 @@ nav {
   flex-direction: column;
   align-items: center;
   margin-top: .5rem;
+}
+
+.search {
+  margin-left: 0%;
+  margin-top: 9rem;
 }
 
 }

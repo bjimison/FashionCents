@@ -27,20 +27,9 @@ class Posts extends Component {
     return (
       <div>
       <Sidebar getAllPosts={this.props.getAllPosts} categorySelect={this.props.categorySelect} posts={this.props.posts} />
-      <div id="main-content">
-        <div className="search">
-          {this.props.username ? (
-            <button id="search-button">
-              <Link className="link" to="/createpost">
-                Post Your Creation
-              </Link>
-            </button>
-          ) : null}
-        </div>
         <div>
           <div className="posts">{posts}</div>
         </div>
-      </div>
       </div>
     );
   }
