@@ -19,7 +19,9 @@ class App extends Component {
     password: "",
     auth: false,
     posts: [],
-    post_category: ""
+    post_category: "",
+    search:'',
+    searchList:null
   };
 
   // history = createHistory(this.props);
@@ -100,20 +102,22 @@ getAllPosts = () => {
     });
   }
 
-  search = (search) => {
-     console.log(search)
-    if(search.length > 2){
-      let posts = [];
-    // posts.filter(post => post.title.toLowerCase() === search.toLowerCase())
-    this.state.posts.forEach(post => {
-     
-      if(post.title.toLowerCase() === search.toLowerCase()){
-        posts.push(post)
-        console.log('match',posts)
-      }
-    })
-    // console.log(posts)
-    this.setState({ posts: posts });
+  search = (event) => {
+    this.setState({searchList: this.state.posts})
+    let tempArr = [];
+
+    if(event.target.value){
+      tempArr = this.state.posts.filter(ele => ele.title.toLowerCase().includes(event.target.value.toLowerCase()))
+      this.setState({
+        searchList: tempArr,
+        search: event.target.value
+      })
+    }
+    else{
+      this.setState({
+        searchList: null,
+        search: event.target.value
+      })
     }
 }
 
@@ -129,7 +133,6 @@ getAllPosts = () => {
       });
   }
 
-
   render() {
     // let username = localStorage.getItem("username");
     return (
@@ -140,6 +143,7 @@ getAllPosts = () => {
           setAuth={this.setAuth}
           logout={this.logout}
         />
+        <input id="search-box" type="text" placeholder="Search" value={this.state.search} onChange={this.search}/>
         <Switch>
           <Route
             path="/createpost"
@@ -159,7 +163,7 @@ getAllPosts = () => {
               <Posts
                 getAllPosts={this.getAllPosts}
                 delete={this.deletePost}
-                posts={this.state.posts}
+                posts={this.state.searchList?this.state.searchList:this.state.posts}
                 username={this.state.username}
                 editPost={this.editPost}
                 search={this.search}

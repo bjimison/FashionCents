@@ -122,7 +122,8 @@ nav {
 #left-arrow {
   color: gray;
   position: fixed;
-  left: 8%;
+  left: 9%;
+  top: 51%;
   display: inline-block;
 }
 
@@ -171,6 +172,7 @@ nav {
   align-self: center;
   text-align: center;
   margin-top: 6rem;
+  margin-left: 10rem;
 }
 
 .main-container {
@@ -189,6 +191,11 @@ nav {
   width: 110px;
 }
 
+#search-box {
+  margin-left: 25%;
+  margin-top: 10%;
+}
+
 #search input {
   border: 1px solid gray;
   border-radius: 2px;
@@ -201,12 +208,10 @@ nav {
   -o-border-radius: 2px;
 }
 
-#search button {
-  border: 1px solid gray;
-  border-radius: 2px;
-  width: 250px;
-  height: 2rem;
-  margin: 0 1rem;
+#search-button {
+  margin-left: 55%;
+  margin-top: -2%;
+  
 }
 
 #search button:hover {
@@ -269,17 +274,31 @@ nav {
 }
 
 .fa-sort-up {
-  padding: 1rem;
   color: green;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .up-arrow {
-  border: 1px solid black;
-  height: 50px;
+  height: 30px;
   margin-left: 1rem;
   align-self: center;
   text-align: center;
+}
+
+.up-arrow i {
+  height: 30px;
+}
+
+.up-arrow button {
+  height: 30px;
+}
+
+.up-arrow i:hover {
+  color: #25D34D
+}
+
+.up-arrow h3 {
+  margin-top: 0;
 }
 
 .showpost-container {

@@ -10,7 +10,8 @@ class Post extends Component {
     category: "",
     img: "",
     description: "",
-    upvotes_required: ""
+    upvotes_required: "",
+    upvotes: 0
   };
 
   componentDidMount = () => {
@@ -63,6 +64,14 @@ handleChange = (event) => {
     this.setState({
         [name]: value
     });
+}
+
+ voteCounter = (event) => {
+  let newCount = this.state.upvotes + 1
+  // add functionality to do POST call to update the vote count in database
+  this.setState({
+    upvotes: newCount
+  })
 }
 
   render() {
@@ -123,7 +132,8 @@ handleChange = (event) => {
             ) : null}
           </div>
           <div className="up-arrow">
-            <i className="fas fa-sort-up" />
+            <button onClick={this.voteCounter}><i className="fas fa-sort-up" /></button>
+            <h3>{this.state.upvotes}</h3>
           </div>
         </div>
       );

@@ -7,16 +7,15 @@ import axios from "axios";
 
 class Posts extends Component {
   state = {
-    post: "",
-    search:''
+    post: ""
   };
  
-  handleSearch = (event) => {
-    this.setState({search: event.target.value})
-    if(event.target.value.length > 2){
-      this.props.search(event.target.value);
-    }
-  }
+  // handleSearch = (event) => {
+  //   this.setState({search: event.target.value})
+  //   if(event.target.value.length > 2){
+  //     this.props.search(event.target.value);
+  //   }
+  // }
 
   render() {
     let posts = this.props.posts.map(post => {
@@ -36,10 +35,9 @@ class Posts extends Component {
       <div>
       <Sidebar getAllPosts={this.props.getAllPosts} categorySelect={this.props.categorySelect} posts={this.props.posts} />
       <div id="main-content">
-        <div id="search">
-          <input type="text" placeholder="Search" value={this.state.search} onChange={this.handleSearch}/>
+        <div className="search">
           {this.props.username ? (
-            <button>
+            <button id="search-button">
               <Link className="link" to="/createpost">
                 Post Your Creation
               </Link>
