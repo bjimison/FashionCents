@@ -21,7 +21,7 @@ class App extends Component {
     posts: [],
     post_category: "",
     search:'',
-    searchList:null
+    searchList:null,
   };
 
   getAllPosts = () => {
@@ -64,7 +64,6 @@ class App extends Component {
           posts.splice(index, 1);
         }
       });
-
       this.setState({
         posts: posts
       });

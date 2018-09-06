@@ -71,6 +71,18 @@ const edit = (req, res) => {
   );
 };
 
+const getVotes = (req, res) => {
+  db.Post.findByIdAndUpdate(
+    req.params.post_id, 
+    req.body, 
+    { new: true }, 
+    (err, updatedPost) => {
+      if(err) throw err;
+      res.json(updatedPost)
+    }
+  )
+}
+
 module.exports = {
   create: create,
   index: index,
@@ -78,5 +90,6 @@ module.exports = {
   getByCategory: getByCategory,
   getByDate: getByDate,
   destroy: destroy,
-  edit: edit
+  edit: edit,
+  getVotes: getVotes
 };

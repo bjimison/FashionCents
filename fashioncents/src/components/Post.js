@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Model from "../models/editPost";
+import VoteModel from "../models/upvote";
 import { Link } from "react-router-dom";
 
 class Post extends Component {
@@ -11,11 +12,14 @@ class Post extends Component {
     img: "",
     description: "",
     upvotes_required: "",
-    upvotes: 0
+    upvotes: ""
   };
 
   componentDidMount = () => {
-    this.setState({ post: this.props.post });
+    this.setState({ 
+      post: this.props.post, 
+      // upvotes: this.props.post.upvotes
+    });
   };
 
   updateState = () => {
@@ -56,23 +60,33 @@ class Post extends Component {
       .catch(err => console.log(err));
   };
 
-handleChange = (event) => {
-    const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
-    const name = target.name;
+  handleChange = (event) => {
+      const target = event.target;
+      const value = target.type === 'checkbox' ? target.checked : target.value;
+      const name = target.name;
 
-    this.setState({
-        [name]: value
-    });
-}
+      this.setState({
+         [name]: value
+      });
+  }
 
- voteCounter = (event) => {
-  let newCount = this.state.upvotes + 1
-  // add functionality to do POST call to update the vote count in database
-  this.setState({
-    upvotes: newCount
-  })
-}
+  voteCounter = (event) => {
+    event.preventDefault();
+    let upvotes = {
+      upvotes: this.state.post.upvotes + 1
+    }
+    // console.log("upvotes: ", upvotes);
+    VoteModel.getVoteCount(this.state.post._id, upvotes)
+    .then(res => {
+      let newCount = res.data.upvotes;
+      this.setState({
+        upvotes: newCount,
+        post: res.data
+      })
+    //  console.log("response from clicking on vote counter: res.data = ", res.data)
+   })
+   .catch(err => console.log(err));
+  }
 
   render() {
     let username = localStorage.getItem("username");
@@ -132,8 +146,9 @@ handleChange = (event) => {
             ) : null}
           </div>
           <div className="up-arrow">
-            <button onClick={this.voteCounter}><i className="fas fa-sort-up" /></button>
-            <h3>{this.state.upvotes}</h3>
+          <h3>{this.state.upvotes?this.state.upvotes:this.state.post.upvotes}</h3>
+          <button onClick={this.voteCounter}><i className="fas fa-sort-up" /></button>
+            
           </div>
         </div>
       );

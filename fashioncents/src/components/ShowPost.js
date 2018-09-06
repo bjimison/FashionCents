@@ -32,6 +32,7 @@ class ShowPost extends Component {
         </div>
         <div className="post-detail-show">
           <h5 id="creator">{this.state.post.creator}</h5>
+          <h5 id="upvotes">{this.state.post.upvotes}</h5>
           <h5 id="upvotes">{this.state.post.upvotes_required}</h5>
         </div>
         <div className="post-description-show">

@@ -33,12 +33,18 @@ class Navbar extends Component {
       res => {
         if (res.status === 404) {
           console.log("request from login failed");
-        }
-        localStorage.setItem("username", res.data.username);
+        } else if (this.refs.password.value !== res.data.password){
+          document.getElementById("exists").style.display = "inline";
+        } else {
+          localStorage.setItem("username", res.data.username);
         localStorage.setItem("userId", res.data._id);
         console.log("RESPONSE:", res.data.username, res.data._id);
         this.props.setAuth(res.data.username, res.data._id);
         this.closeloginModal();
+        }
+        setTimeout(() => {if(this.state.loginmodalIsOpen === true){
+          document.getElementById("exists").style.display = "inline";
+        }}, 100);
       }
     );
   };
@@ -51,7 +57,7 @@ class Navbar extends Component {
           console.log("Response from signup: ", res.data);
           if (res.status === 404) {
             console.log("request failed from signup");
-            document.getElementById("exists").style.display = "inline";
+            document.getElementById("match").style.display = "inline";
           }
           localStorage.setItem("username", res.data.username);
           localStorage.setItem("userId", res.data._id);
@@ -59,9 +65,10 @@ class Navbar extends Component {
           this.closesignupModal();
         })
         .catch(err => {
-          document.getElementById("exists").style.display = "inline";
+          document.getElementById("match").style.display = "inline";
         });
     } else {
+      document.getElementById("match").style.display = "inline";
       console.log("passwords do not match");
     }
   };
@@ -152,6 +159,9 @@ class Navbar extends Component {
           contentLabel="Example Modal"
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Login</h2>
+          <p id="exists">
+              Login Failed, please try again.
+            </p>
           <form onSubmit={this.onSubmitLogin} className="registerForm">
           <div className="modal-inputs">
             <input className="modal-input" type="text" ref="username" placeholder="Username" />
@@ -172,8 +182,8 @@ class Navbar extends Component {
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign Up</h2>
           <form id="signup-modal" onSubmit={this.onSubmitSignup} className="registerForm">
-            <p id="exists">
-              This Username already exists. Please select another one.
+            <p id="match">
+              Passwords do not match
             </p>
             <input className="modal-input" type="text" ref="username" placeholder="Username" />
             <input className="modal-input" type="password" ref="password" placeholder="Password" />

@@ -27,6 +27,7 @@ app.get("/api/users", controllers.user.index);
 
 // PUT
 app.put("/api/posts/:post_id", controllers.post.edit);
+app.put("/api/posts/upvotes/:post_id", controllers.post.getVotes);
 // DELETE
 app.delete("/api/posts/:post_id", controllers.post.destroy);
 

@@ -168,6 +168,11 @@ nav {
   color: #ad0016;
 }
 
+#match {
+  display: none;
+  color: #ad0016;
+}
+
 .search {
   align-self: center;
   display: flex;
@@ -475,7 +480,7 @@ a {
 }
 
 .posts {
-  width: 94%;
+  width: 94% !important;
 }
 
 /* ########### end of media queries ############# */
