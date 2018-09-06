@@ -29,6 +29,8 @@ class Sidebar extends Component {
             <div>
             <div id="sidebar-container">
             <ul id="sidebar-list">
+                <li><span onClick={this.props.getAllPosts} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                    All</span></li>
                 <li><span onClick={this.props.categorySelect} id="Hats" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Hats</span></li>
                 <li><span onClick={this.props.categorySelect} id="Jackets" className="nav-item" to={`/posts/${this.props.post_category}`}>
@@ -37,8 +39,6 @@ class Sidebar extends Component {
                     Shirts</span></li>
                 <li><span onClick={this.props.categorySelect} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Pants</span></li>
-                <li><span onClick={this.props.getAllPosts} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
-                    All</span></li>
             </ul>
             </div>
         
