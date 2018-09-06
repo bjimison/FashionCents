@@ -16,15 +16,13 @@ import Model from "./models/getPostByCategory";
 class App extends Component {
   state = {
     username: "",
-    password: "",
+    userId: "",
     auth: false,
     posts: [],
     post_category: "",
     search:'',
     searchList:null
   };
-
-  // history = createHistory(this.props);
 
 getAllPosts = () => {
   axios.get("http://localhost:4000/api/posts").then(res => {
@@ -34,6 +32,13 @@ getAllPosts = () => {
 
   componentDidMount = () => {
     this.getAllPosts();
+
+    if (localStorage.getItem("username")) {
+      this.setState({
+        auth: true,
+        username: localStorage.getItem("username")
+      });
+    }
   };
 
   addPost = newPost => {
@@ -68,17 +73,18 @@ getAllPosts = () => {
     });
   };
 
-  setAuth = (username, password) => {
+  setAuth = (username, userId) => {
     this.setState({
       auth: true,
       username: username,
-      password: password
+      userId: userId,
     });
   };
 
   logout = () => {
     if (localStorage.getItem("username") !== null) {
       localStorage.removeItem("username");
+      
     }
     this.setState({
       auth: false,
@@ -87,20 +93,6 @@ getAllPosts = () => {
     });
     this.props.history.push("/");
   };
-
-  componentDidMount() {
-    if (localStorage.getItem("username") !== null) {
-      this.setState({
-        auth: true,
-        username: localStorage.getItem("username"),
-        password: localStorage.getItem("password")
-      });
-    }
-
-    axios.get("http://localhost:4000/api/posts").then(response => {
-      this.setState({ posts: response.data });
-    });
-  }
 
   search = (event) => {
     this.setState({searchList: this.state.posts})
@@ -122,7 +114,6 @@ getAllPosts = () => {
 }
 
   categorySelect = event => {
-        // event.preventDefault();
       let post_category = event.target.id.toLowerCase();
       console.log(post_category)
       Model.getCategory(post_category)

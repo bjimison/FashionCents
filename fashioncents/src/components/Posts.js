@@ -9,13 +9,6 @@ class Posts extends Component {
   state = {
     post: ""
   };
- 
-  // handleSearch = (event) => {
-  //   this.setState({search: event.target.value})
-  //   if(event.target.value.length > 2){
-  //     this.props.search(event.target.value);
-  //   }
-  // }
 
   render() {
     let posts = this.props.posts.map(post => {

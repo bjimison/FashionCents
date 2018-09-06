@@ -27,7 +27,6 @@ class Navbar extends Component {
     }
   };
 
-
   onSubmitLogin = event => {
     event.preventDefault();
     LoginModel.login(this.refs.username.value, this.refs.password.value).then(
@@ -36,11 +35,10 @@ class Navbar extends Component {
           console.log("request from login failed");
         }
         localStorage.setItem("username", res.data.username);
-        localStorage.setItem("password", res.data.password);
+        localStorage.setItem("userId", res.data._id);
         console.log("RESPONSE:", res.data.username, res.data._id);
-        this.props.setAuth(res.data.username, res.data.password);
+        this.props.setAuth(res.data.username, res.data._id);
         this.closeloginModal();
-        // this.props.history.push("/");
       }
     );
   };
@@ -55,15 +53,13 @@ class Navbar extends Component {
             console.log("request failed from signup");
           }
           localStorage.setItem("username", res.data.username);
-          localStorage.setItem("password", res.data.password);
+          localStorage.setItem("userId", res.data._id);
           console.log(
             "local storage set for UN and PW:",
             res.data.username,
-            res.data.password
           );
-          this.props.setAuth(res.data.username);
+          this.props.setAuth(res.data.username, res.data._id);
           this.closesignupModal();
-            // this.props.history.push("/profile");
         })
         .catch(err => {
           console.log("In Catch from signup", err);
@@ -163,7 +159,7 @@ class Navbar extends Component {
           <form onSubmit={this.onSubmitLogin} className="registerForm">
           <div className="modal-inputs">
             <input className="modal-input" type="text" ref="username" placeholder="Username" />
-            <input className="modal-input" type="text" ref="password" placeholder="Password" />
+            <input className="modal-input" type="password" ref="password" placeholder="Password" />
             <input className="modal-submit" type="submit" value="Submit" />
             </div>
           </form>
@@ -184,9 +180,9 @@ class Navbar extends Component {
           </p>
           <form id="signup-modal" onSubmit={this.onSubmitSignup} className="registerForm">
             <input className="modal-input" type="text" ref="username" placeholder="Username" />
-            <input className="modal-input" type="text" ref="password" placeholder="Password" />
+            <input className="modal-input" type="password" ref="password" placeholder="Password" />
             <input className="modal-input"
-              type="text"
+              type="password"
               ref="confirmpassword"
               placeholder="Confirm Password"
             />

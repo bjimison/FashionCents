@@ -29,15 +29,15 @@ class Sidebar extends Component {
             <div>
             <div id="sidebar-container">
             <ul id="sidebar-list">
-                <li><span onClick={this.props.getAllPosts} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                <li><span onClick={this.props.getAllPosts} id="all" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     All</span></li>
-                <li><span onClick={this.props.categorySelect} id="Hats" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                <li><span onClick={this.props.categorySelect} id="hats" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Hats</span></li>
-                <li><span onClick={this.props.categorySelect} id="Jackets" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                <li><span onClick={this.props.categorySelect} id="jackets" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Jackets</span></li>
-                <li><span onClick={this.props.categorySelect} id="Shirts" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                <li><span onClick={this.props.categorySelect} id="shirts" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Shirts</span></li>
-                <li><span onClick={this.props.categorySelect} id="Pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
+                <li><span onClick={this.props.categorySelect} id="pants" className="nav-item" to={`/posts/${this.props.post_category}`}>
                     Pants</span></li>
             </ul>
             </div>
