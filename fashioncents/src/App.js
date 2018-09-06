@@ -24,11 +24,11 @@ class App extends Component {
     searchList:null
   };
 
-getAllPosts = () => {
+  getAllPosts = () => {
   axios.get("http://localhost:4000/api/posts").then(res => {
       this.setState({ posts: res.data });
     });
-}
+  }
 
   componentDidMount = () => {
     this.getAllPosts();
@@ -83,7 +83,6 @@ getAllPosts = () => {
   logout = () => {
     if (localStorage.getItem("username") !== null) {
       localStorage.removeItem("username");
-      
     }
     this.setState({
       auth: false,
@@ -110,7 +109,7 @@ getAllPosts = () => {
         search: event.target.value
       })
     }
-}
+  }
 
   categorySelect = event => {
       let post_category = event.target.id.toLowerCase();

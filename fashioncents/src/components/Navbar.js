@@ -51,18 +51,14 @@ class Navbar extends Component {
           console.log("Response from signup: ", res.data);
           if (res.status === 404) {
             console.log("request failed from signup");
+            document.getElementById("exists").style.display = "inline";
           }
           localStorage.setItem("username", res.data.username);
           localStorage.setItem("userId", res.data._id);
-          console.log(
-            "local storage set for UN and PW:",
-            res.data.username,
-          );
           this.props.setAuth(res.data.username, res.data._id);
           this.closesignupModal();
         })
         .catch(err => {
-          console.log("In Catch from signup", err);
           document.getElementById("exists").style.display = "inline";
         });
     } else {
@@ -175,10 +171,10 @@ class Navbar extends Component {
           contentLabel="Example Modal"
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign Up</h2>
-          <p id="exists">
-            This Username already exists. Please select another one.
-          </p>
           <form id="signup-modal" onSubmit={this.onSubmitSignup} className="registerForm">
+            <p id="exists">
+              This Username already exists. Please select another one.
+            </p>
             <input className="modal-input" type="text" ref="username" placeholder="Username" />
             <input className="modal-input" type="password" ref="password" placeholder="Password" />
             <input className="modal-input"

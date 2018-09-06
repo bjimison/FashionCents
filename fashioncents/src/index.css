@@ -474,4 +474,9 @@ a {
   margin-top: 9rem;
 }
 
+.posts {
+  width: 94%;
+}
+
+/* ########### end of media queries ############# */
 }
