@@ -127,7 +127,7 @@ class Post extends Component {
           <img src={this.props.post.img} />
           <div className="post-detail">
             <p>{this.props.post.title}</p>
-            <button onClick={this.props.fetchPosts} value={this.props.value}>
+            <button className="view-button" onClick={this.props.fetchPosts} value={this.props.value}>
               <Link className="link" to={`/showpost/${post._id}`}>
                 View Post
               </Link>
@@ -146,9 +146,8 @@ class Post extends Component {
             ) : null}
           </div>
           <div className="up-arrow">
-          <h3 className="displayed-votes">{this.state.upvotes?this.state.upvotes:this.state.post.upvotes}</h3>
-          <i onClick={this.voteCounter} className="fas fa-sort-up" />
-            
+            <h3 className="displayed-votes">{this.state.upvotes?this.state.upvotes:this.state.post.upvotes}</h3>
+            <i onClick={this.voteCounter} className="fas fa-sort-up" />
           </div>
         </div>
       );
