@@ -23,19 +23,41 @@ body {
 .modal-close {
   width: 50px;
   align-self: center;
+  padding: 3px;
+  width: 100px;
+  border: 1px solid white;
+  border-radius: 8px;
 }
 
 .modal-close:hover {
+  background-color: #E6E6E6;
   color: #ad0016;
+  box-shadow: inset 0 0 0 3px #E6E6E6;
+  transition: all 0.5s ease;
+  border: 1px solid white;
 }
 
 .modal-submit:hover {
-  color: #24C014;
+  background-color: #E6E6E6;
+  color: #ad0016;
+  box-shadow: inset 0 0 0 3px #E6E6E6;
+  transition: all 0.5s ease;
+  border: 1px solid white;
 }
 
 #login-close {
   margin-bottom: 2.4rem;
 }
+
+.modal-submit {
+  width: 50px;
+  align-self: center;
+  padding: 3px;
+  width: 100px;
+  border: 1px solid white;
+  border-radius: 8px;
+}
+
 
 .modal-inputs {
   display: flex;
@@ -49,25 +71,6 @@ body {
   height: 2rem;
   text-align: center;
   margin: 1rem;
-}
-
-#login-button {
-  /* background-color: #ad0016; */
-  /* border: none;
-  padding: 6px; */
-}
-
-#signup-button {
-  /* background-color: #ad0016; */
-  /* border: none;
-  padding: 6px; */
-}
-
-#logo {
-  /* background-color: #ad0016; */
-  /* border: 1px solid #ad0016;
-  border-radius: 13px; */
-  /* padding: .5rem; */
 }
 
 #signup-modal {
@@ -221,7 +224,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 7rem;
+  margin-top: 6rem;
   margin-left: 10%;
 }
 

@@ -99,19 +99,19 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navigation">
             {this.props.auth ? (
               <ul className="navbar-nav ml-auto">
-                <li id="logo" className="nav-item">
+                <li className="nav-item">
                   <NavLink className="nav-link" exact to="/">
                     <i className="fas fa-child" />
                     FashionCents
                   </NavLink>
                 </li>
                 <div id="login">
-                  <li id="logo" className="nav-item">
+                  <li className="nav-item">
                     <NavLink className="nav-link" to={`/user/${localStorage.getItem("username")}`}>
                       Hello, {this.props.username}
                     </NavLink>
                   </li>
-                  <li id="logo" className="nav-item">
+                  <li className="nav-item">
                     <span className="nav-link" onClick={this.props.logout}>
                       Logout
                     </span>
@@ -121,7 +121,7 @@ class Navbar extends Component {
             ) : (
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <NavLink id="logo" className="nav-link" exact to="/">
+                  <NavLink className="nav-link" exact to="/">
                     <i className="fas fa-child" />
                     FashionCents
                   </NavLink>
