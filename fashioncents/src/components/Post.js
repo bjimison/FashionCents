@@ -129,7 +129,6 @@ class Post extends Component {
           <img src={this.props.post.img} />
           <div className="post-detail">
             <p>{this.props.post.title}</p>
-            {/*<p>{this.props.post.description}</p>*/}
             <button className="view-button" onClick={this.props.fetchPosts} value={this.props.value}>
               <Link className="link" to={`/showpost/${post._id}`}>
                 View Post
@@ -142,9 +141,7 @@ class Post extends Component {
             ) : null}
             {username === this.props.post.username ? (
               <button className="view-button" onClick={this.toggleEdit} value={this.props.value}>
-                {/*<Link className="link" to={`/editpost/${post._id}`}>*/}
                 Edit
-                {/* </Link>*/}
               </button>
             ) : null}
           </div>
