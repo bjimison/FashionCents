@@ -286,7 +286,6 @@ a {
   flex-direction: row;
   justify-content: space-between;
   background: white;
-  position: relative;
 }
 
 .post-item-row {
@@ -295,7 +294,6 @@ a {
 }
 
 .view-button {
-  
   background: white;
   border: 1px solid white;
   border-radius: 10px;
@@ -322,8 +320,8 @@ a {
   height: 30px;
   align-self: center;
   text-align: center;
-  position: relative;
   right: 10%;
+  margin-right: 2rem;
 }
 
 .up-arrow i {

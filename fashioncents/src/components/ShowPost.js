@@ -39,7 +39,7 @@ class ShowPost extends Component {
           <img src={this.state.post.img} />
           <p>Item Description: {this.state.post.description}</p>
           <div id="show-up-arrow">
-            <i className="fas fa-sort-up" />
+            {/*<i className="fas fa-sort-up" />*/}
           </div>
           <button onClick={()=>this.props.deletePost(this.state.post._id)}>Delete</button>
         </div>
