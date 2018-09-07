@@ -41,7 +41,7 @@ class ShowPost extends Component {
           <div id="show-up-arrow">
             {/*<i className="fas fa-sort-up" />*/}
           </div>
-          <button onClick={()=>this.props.deletePost(this.state.post._id)}>Delete</button>
+          <button className="view-button" onClick={()=>this.props.deletePost(this.state.post._id)}>Delete</button>
         </div>
       </div>
     );

@@ -117,7 +117,7 @@ class Post extends Component {
       post = this.props.post;
       return (
         <div>
-          <h1 id="create-title">Show the world your ideas</h1>
+          <h1 id="create-title">Share your Design</h1>
           {form}
         </div>
       );
@@ -127,18 +127,19 @@ class Post extends Component {
           <img src={this.props.post.img} />
           <div className="post-detail">
             <p>{this.props.post.title}</p>
+            {/*<p>{this.props.post.description}</p>*/}
             <button className="view-button" onClick={this.props.fetchPosts} value={this.props.value}>
               <Link className="link" to={`/showpost/${post._id}`}>
                 View Post
               </Link>
             </button>
             {username === this.props.post.username ? (
-              <button onClick={() => this.props.delete(post._id)}>
+              <button className="view-button" onClick={() => this.props.delete(post._id)}>
                 Delete
               </button>
             ) : null}
             {username === this.props.post.username ? (
-              <button onClick={this.toggleEdit} value={this.props.value}>
+              <button className="view-button" onClick={this.toggleEdit} value={this.props.value}>
                 {/*<Link className="link" to={`/editpost/${post._id}`}>*/}
                 Edit
                 {/* </Link>*/}

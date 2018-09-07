@@ -84,6 +84,16 @@ nav {
   display: flex;
   flex-direction: row;
   align-content: center;
+  border: 1px solid #ad0016;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.nav-item:hover {
+  background-color: white;
+  color: #ad0016;
+  box-shadow: inset 0 0 0 3px #9C0810;
+  transition: all 1.4s ease;
 }
 
 .nav-link {
@@ -93,7 +103,7 @@ nav {
 }
 
 .nav-link:hover {
-  color: gray;
+  color: #ad0016;
 }
 
 .fa-child {
@@ -111,8 +121,26 @@ nav {
   bottom: 0;
 }
 
-#sidebar-container li {
-  margin-left: -2rem;
+.nav-item-side {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #E6E6E6;
+  border-radius: 10px;
+  padding: 2px;
+}
+
+.nav-item-side span {
+  border: 1px solid #E6E6E6;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.nav-item-side span:hover {
+  background-color: white;
+  color: black;
+  box-shadow: inset 0 0 0 3px white;
+  transition: all 1.4s ease;
 }
 
 #arrows {
@@ -148,16 +176,22 @@ nav {
   justify-content: space-around;
   height: 90%;
   margin-bottom: 0;
-  text-align: left;
-  margin-right: 2rem;
-}
-
-#sidebar-container li:hover {
-  color: #ad0016;
+  padding: 0;
+  align-content: center;
 }
 
 #search-button:hover {
+  background-color: #E6E6E6;
   color: #ad0016;
+  box-shadow: inset 0 0 0 3px #E6E6E6;
+  transition: all 1s ease;
+  border: 1px solid #E6E6E6;
+}
+
+#sidebar-list li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 
@@ -204,6 +238,8 @@ nav {
 }
 
 #search-button {
+  border: 1px solid white;
+  border-radius: 10px;
   margin-left: 3%;
   width: 250px;
   height: 2rem;
@@ -220,14 +256,14 @@ a {
 
 #search-box {
   margin-right: 3%;
-  border: 1px solid gray;
-  border-radius: 2px;
+  border: 1px solid white;
+  border-radius: 10px;
   width: 250px;
   height: 2rem;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 /* ######################## POSTS #################################### */

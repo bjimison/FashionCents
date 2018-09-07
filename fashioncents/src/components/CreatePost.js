@@ -26,7 +26,7 @@ class CreatePost extends Component {
   render() {
     return (
       <div id="createpost-container">
-        <h1 id="create-title">Show the world your ideas</h1>
+        <h1 id="create-title">Share your Design</h1>
         <form className="createForm" onSubmit={this.onSubmit}>
           <div className="form-input">
             <input ref="title" type="text" placeholder="Title" />
