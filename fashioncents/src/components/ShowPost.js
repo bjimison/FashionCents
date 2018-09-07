@@ -27,17 +27,17 @@ class ShowPost extends Component {
     return (
       <div className="showpost-container">
         <div className="post-detail-show">
-          <h3 id="title">{this.state.post.title}</h3>
-          <h5 id="category">{this.state.post.category}</h5>
+          <h3 id="title">Title: {this.state.post.title}</h3>
+          <h3 id="category">Category: {this.state.post.category}</h3>
         </div>
         <div className="post-detail-show">
-          <h5 id="creator">{this.state.post.creator}</h5>
-          <h5 id="upvotes">{this.state.post.upvotes}</h5>
-          <h5 id="upvotes">{this.state.post.upvotes_required}</h5>
+          <h3 id="creator">Created By: {this.state.post.creator}</h3>
+          <h3 id="upvotes">Current Upvotes: {this.state.post.upvotes}</h3>
         </div>
+        <h3 id="upvotes-required">Upvotes Required for Production: {this.state.post.upvotes_required}</h3>
         <div className="post-description-show">
           <img src={this.state.post.img} />
-          <p>{this.state.post.description}</p>
+          <p>Item Description: {this.state.post.description}</p>
           <div id="show-up-arrow">
             <i className="fas fa-sort-up" />
           </div>

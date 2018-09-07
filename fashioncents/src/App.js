@@ -152,6 +152,7 @@ class App extends Component {
               props => (<ShowPost deletePost={this.deletePost} {...props}/>)}/>
           <Route path="/editpost/:post_id" component={Post} />
           <Route path="/posts/:post_category" component={Posts} />
+
           <Route
             exact
             path="/"
