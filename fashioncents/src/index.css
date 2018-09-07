@@ -216,12 +216,12 @@ body {
   color: #ad0016;
 }
 
-.search {
+#search {
   align-self: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 6rem;
+  margin-top: 7rem;
   margin-left: 10%;
 }
 

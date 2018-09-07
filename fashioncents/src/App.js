@@ -121,15 +121,8 @@ class App extends Component {
 
   render() {
     // let username = localStorage.getItem("username");
-    return (
-      <div className="App">
-        <Navbar
-          auth={this.state.auth}
-          username={this.state.username}
-          setAuth={this.setAuth}
-          logout={this.logout}
-        />
-        <div className="search">
+    let search = this.props.location.pathname === '/'
+      ? <div id="search">
         <input id="search-box" type="text" placeholder="Search" value={this.state.search} onChange={this.search}/>
         
           {this.state.username ? (
@@ -140,6 +133,21 @@ class App extends Component {
             </button>
           ) : null}
         </div>
+      : null;
+
+      console.log(this.props)
+
+    return (
+      <div className="App">
+        <Navbar
+          auth={this.state.auth}
+          username={this.state.username}
+          setAuth={this.setAuth}
+          logout={this.logout}
+        />
+
+        {search}
+
         <Switch>
           <Route
             path="/createpost"
