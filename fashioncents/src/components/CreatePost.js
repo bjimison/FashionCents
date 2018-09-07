@@ -41,7 +41,7 @@ class CreatePost extends Component {
             <input
               ref="upvotes_required"
               type="text"
-              placeholder="Enter the number of Upvotes desired to Create"
+              placeholder="Number of Upvotes Desired"
             />
           </div>
           <div className="form-text">

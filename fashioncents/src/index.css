@@ -357,6 +357,16 @@ a {
   width: 10%;
 }
 
+.createForm input {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.createForm textarea {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
 #title {
   margin: 0;
 }
@@ -434,16 +444,15 @@ a {
 
 .button {
   border: 1px solid white;
-  border-radius: 2px;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .button:hover {
-  background-color: #ad0016;
-  color: gray;
+  background-color: #E6E6E6;
 }
 
 .createForm textarea {
