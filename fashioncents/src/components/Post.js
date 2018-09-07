@@ -146,8 +146,8 @@ class Post extends Component {
             ) : null}
           </div>
           <div className="up-arrow">
-          <h3>{this.state.upvotes?this.state.upvotes:this.state.post.upvotes}</h3>
-          <button onClick={this.voteCounter}><i className="fas fa-sort-up" /></button>
+          <h3 className="displayed-votes">{this.state.upvotes?this.state.upvotes:this.state.post.upvotes}</h3>
+          <i onClick={this.voteCounter} className="fas fa-sort-up" />
             
           </div>
         </div>
