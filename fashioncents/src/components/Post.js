@@ -105,7 +105,7 @@ class Post extends Component {
             <input name="upvotes_required" ref="upvotes_required" type="text" placeholder="Enter the number of Upvotes desired to Create" value={this.state.upvotes_required} onChange={this.handleChange}/>
           </div>
           <div className="edit-form-text">
-            <input type="text" placeholder={this.state.post.upvotes} />
+            {/*<input id="current-upvotes" type="text" placeholder={this.state.post.upvotes} />*/}
             <textarea id="edit-textarea" name="description" placeholder="Description" ref="description" value={this.state.description} onChange={this.handleChange}/>
             <input className="button" type="submit" />
           </div>

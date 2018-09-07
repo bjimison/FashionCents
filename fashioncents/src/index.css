@@ -327,6 +327,10 @@ a {
   height: 3rem;
 }
 
+#current-upvotes {
+  width: 20px;
+}
+
 .post-item {
   border: 1px solid #E6E6E6;
   border-radius: 10px;
