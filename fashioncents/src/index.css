@@ -52,13 +52,22 @@ body {
 }
 
 #login-button {
-  background-color: #ad0016;
-  border: none;
+  /* background-color: #ad0016; */
+  /* border: none;
+  padding: 6px; */
 }
 
 #signup-button {
-  background-color: #ad0016;
-  border: none;
+  /* background-color: #ad0016; */
+  /* border: none;
+  padding: 6px; */
+}
+
+#logo {
+  /* background-color: #ad0016; */
+  /* border: 1px solid #ad0016;
+  border-radius: 13px; */
+  /* padding: .5rem; */
 }
 
 #signup-modal {
@@ -86,26 +95,24 @@ body {
   padding: 6px;
 }
 
-.nav-item:hover {
-  background-color: white;
-  color: black;
-  box-shadow: inset 0 0 0 3px #9C0810;
-  transition: all 1.6s ease;
-}
-
 .nav-link {
   text-decoration: none;
   color: white;
   font-size: 1.5rem;
+  background-color: #ad0016;
+  border: 1px solid #ad0016;
+  border-radius: 13px;
+  padding: 5px;
 }
 
 .nav-link:hover {
-  transition: all 1.6s ease;
   color: #ad0016;
+  background-color: white;
+  transition: all 1.2s ease;
 }
 
 .fa-child {
-  margin: 0 0.4rem;
+  margin: 0 0.4 0 0rem;
 }
 
 /* ######################### SIDEBAR ################################# */
@@ -117,6 +124,7 @@ body {
   position: fixed;
   top: 0;
   bottom: 0;
+  margin-top: 1rem;
 }
 
 .nav-item-side {
@@ -136,7 +144,7 @@ body {
   background-color: white;
   color: black;
   box-shadow: inset 0 0 0 3px white;
-  transition: all 1.6s ease;
+  transition: all 1.2s ease;
 }
 
 #arrows {
@@ -180,7 +188,7 @@ body {
   background-color: #E6E6E6;
   color: #ad0016;
   box-shadow: inset 0 0 0 3px #E6E6E6;
-  transition: all 1.6s ease;
+  transition: all 1.2s ease;
   border: 1px solid #E6E6E6;
 }
 
@@ -240,6 +248,7 @@ body {
   width: 250px;
   height: 2rem;
   text-decoration: none;
+  margin-top: 1.5rem;
 }
 
 #search-button:hover {
@@ -251,6 +260,7 @@ a {
 }
 
 #search-box {
+  margin-top: 1.5rem;
   margin-right: 3%;
   border: 1px solid white;
   border-radius: 10px;
@@ -532,7 +542,7 @@ a {
 }
 
 #sidebar-container li {
-  margin-top: -1rem;
+  margin-top: -1.3rem;
 }
 
 #main-content {
@@ -554,7 +564,7 @@ a {
   background-color: #E6E6E6;
   color: #ad0016;
   box-shadow: inset 0 0 0 3px #E6E6E6;
-  transition: all 1.6s ease;
+  transition: all 1.2s ease;
   border: 1px solid #E6E6E6;
 }
 
@@ -610,6 +620,10 @@ a {
 @media only screen and (max-width: 500px){
   * {
     font-size: 10px;
+  }
+
+  #sidebar-container li {
+    border: none !important;
   }
 
   .nav-item {
