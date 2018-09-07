@@ -79,6 +79,7 @@ class Post extends Component {
     VoteModel.getVoteCount(this.state.post._id, upvotes)
     .then(res => {
       let newCount = res.data.upvotes;
+      this.props.editPost(res.data);
       this.setState({
         upvotes: newCount,
         post: res.data
@@ -89,6 +90,7 @@ class Post extends Component {
   }
 
   render() {
+    console.log('upvotes',this.state.upvotes,'post upvotes',this.state.post.upvotes)
     let username = localStorage.getItem("username");
     let post = this.props.post;
     let form;

@@ -302,6 +302,11 @@ a {
   text-align: center;
 }
 
+.post-detail {
+  /* display: inline-block; */
+  width: 200px;
+}
+
 .post-detail-show {
   display: flex;
   flex-direction: row;
@@ -352,7 +357,6 @@ a {
   height: 30px;
   align-self: center;
   text-align: center;
-  right: 10%;
   margin-right: 2rem;
 }
 
