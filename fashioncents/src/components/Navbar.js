@@ -23,7 +23,7 @@ class Navbar extends Component {
       border: "3px solid #ad0016",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-around",
+      justifyContent: "space-around"
     }
   };
 
@@ -33,18 +33,19 @@ class Navbar extends Component {
       res => {
         if (res.status === 404) {
           console.log("request from login failed");
-        } else if (this.refs.password.value !== res.data.password){
+        } else if (this.refs.password.value !== res.data.password) {
           document.getElementById("exists").style.display = "inline";
         } else {
           localStorage.setItem("username", res.data.username);
-        localStorage.setItem("userId", res.data._id);
-        console.log("RESPONSE:", res.data.username, res.data._id);
-        this.props.setAuth(res.data.username, res.data._id);
-        this.closeloginModal();
+          localStorage.setItem("userId", res.data._id);
+          this.props.setAuth(res.data.username, res.data._id);
+          this.closeloginModal();
         }
-        setTimeout(() => {if(this.state.loginmodalIsOpen === true){
-          document.getElementById("exists").style.display = "inline";
-        }}, 100);
+        setTimeout(() => {
+          if (this.state.loginmodalIsOpen === true) {
+            document.getElementById("exists").style.display = "inline";
+          }
+        }, 100);
       }
     );
   };
@@ -90,7 +91,6 @@ class Navbar extends Component {
   };
 
   render() {
-
     // let user_id = this.props.match.params.user_id;
 
     return (
@@ -107,7 +107,10 @@ class Navbar extends Component {
                 </li>
                 <div id="login">
                   <li className="nav-item">
-                    <NavLink className="nav-link" to={`/user/${localStorage.getItem("username")}`}>
+                    <NavLink
+                      className="nav-link"
+                      to={`/user/${localStorage.getItem("username")}`}
+                    >
                       Hello, {this.props.username}
                     </NavLink>
                   </li>
@@ -159,17 +162,31 @@ class Navbar extends Component {
           contentLabel="Example Modal"
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Login</h2>
-          <p id="exists">
-              Login Failed, please try again.
-            </p>
+          <p id="exists">Login Failed, please try again.</p>
           <form onSubmit={this.onSubmitLogin} className="registerForm">
-          <div className="modal-inputs">
-            <input className="modal-input" type="text" ref="username" placeholder="Username" />
-            <input className="modal-input" type="password" ref="password" placeholder="Password" />
-            <input className="modal-submit" type="submit" value="Submit" />
+            <div className="modal-inputs">
+              <input
+                className="modal-input"
+                type="text"
+                ref="username"
+                placeholder="Username"
+              />
+              <input
+                className="modal-input"
+                type="password"
+                ref="password"
+                placeholder="Password"
+              />
+              <input className="modal-submit" type="submit" value="Submit" />
             </div>
           </form>
-          <button id="login-close" className="modal-close" onClick={this.closeloginModal}>close</button>
+          <button
+            id="login-close"
+            className="modal-close"
+            onClick={this.closeloginModal}
+          >
+            close
+          </button>
         </Modal>
         <Modal
           style={this.customStyles}
@@ -181,20 +198,35 @@ class Navbar extends Component {
           contentLabel="Example Modal"
         >
           <h2 ref={subtitle => (this.subtitle = subtitle)}>Sign Up</h2>
-          <form id="signup-modal" onSubmit={this.onSubmitSignup} className="registerForm">
-            <p id="match">
-              Passwords do not match
-            </p>
-            <input className="modal-input" type="text" ref="username" placeholder="Username" />
-            <input className="modal-input" type="password" ref="password" placeholder="Password" />
-            <input className="modal-input"
+          <form
+            id="signup-modal"
+            onSubmit={this.onSubmitSignup}
+            className="registerForm"
+          >
+            <p id="match">Passwords do not match</p>
+            <input
+              className="modal-input"
+              type="text"
+              ref="username"
+              placeholder="Username"
+            />
+            <input
+              className="modal-input"
+              type="password"
+              ref="password"
+              placeholder="Password"
+            />
+            <input
+              className="modal-input"
               type="password"
               ref="confirmpassword"
               placeholder="Confirm Password"
             />
             <input className="modal-submit" type="submit" value="Submit" />
           </form>
-          <button className="modal-close" onClick={this.closesignupModal}>close</button>
+          <button className="modal-close" onClick={this.closesignupModal}>
+            close
+          </button>
         </Modal>
       </div>
     );

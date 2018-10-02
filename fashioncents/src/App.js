@@ -11,8 +11,6 @@ import Delete from "./models/deletePost";
 import Posts from "./components/Posts";
 import Model from "./models/getPostByCategory";
 
-
-
 class App extends Component {
   state = {
     username: "",
@@ -20,15 +18,15 @@ class App extends Component {
     auth: false,
     posts: [],
     post_category: "",
-    search:'',
-    searchList:null,
+    search: "",
+    searchList: null
   };
 
   getAllPosts = () => {
-  axios.get("http://localhost:4000/api/posts").then(res => {
+    axios.get("http://localhost:4000/api/posts").then(res => {
       this.setState({ posts: res.data });
     });
-  }
+  };
 
   componentDidMount = () => {
     this.getAllPosts();
@@ -53,8 +51,8 @@ class App extends Component {
     posts[index] = updatedPost;
     this.setState({
       posts: posts
-    })
-  }
+    });
+  };
 
   deletePost = post_id => {
     Delete.delete(post_id).then(res => {
@@ -67,7 +65,7 @@ class App extends Component {
       this.setState({
         posts: posts
       });
-      this.props.history.push('/')
+      this.props.history.push("/");
     });
   };
 
@@ -75,7 +73,7 @@ class App extends Component {
     this.setState({
       auth: true,
       username: username,
-      userId: userId,
+      userId: userId
     });
   };
 
@@ -91,51 +89,53 @@ class App extends Component {
     this.props.history.push("/");
   };
 
-  search = (event) => {
-    this.setState({searchList: this.state.posts})
+  search = event => {
+    this.setState({ searchList: this.state.posts });
     let tempArr = [];
 
-    if(event.target.value){
-      tempArr = this.state.posts.filter(ele => ele.title.toLowerCase().includes(event.target.value.toLowerCase()))
+    if (event.target.value) {
+      tempArr = this.state.posts.filter(ele =>
+        ele.title.toLowerCase().includes(event.target.value.toLowerCase())
+      );
       this.setState({
         searchList: tempArr,
         search: event.target.value
-      })
-    }
-    else{
+      });
+    } else {
       this.setState({
         searchList: null,
         search: event.target.value
-      })
+      });
     }
-  }
+  };
 
   categorySelect = event => {
-      let post_category = event.target.id.toLowerCase();
-      Model.getCategory(post_category)
-       .then(res => {
-         res = res.data
-        this.setState({ posts: res });
-      });
-  }
+    let post_category = event.target.id.toLowerCase();
+    Model.getCategory(post_category).then(res => {
+      res = res.data;
+      this.setState({ posts: res });
+    });
+  };
 
   render() {
-    // let username = localStorage.getItem("username");
-    let search = this.props.location.pathname === '/'
-      ? <div id="search">
-        <input id="search-box" type="text" placeholder="Search" value={this.state.search} onChange={this.search}/>
-        
+    let search =
+      this.props.location.pathname === "/" ? (
+        <div id="search">
+          <input
+            id="search-box"
+            type="text"
+            placeholder="Search"
+            value={this.state.search}
+            onChange={this.search}
+          />
+
           {this.state.username ? (
             <button id="search-button">
-              <Link to="/createpost">
-                Post Your Creation
-              </Link>
+              <Link to="/createpost">Post Your Creation</Link>
             </button>
           ) : null}
         </div>
-      : null;
-
-      console.log(this.props)
+      ) : null;
 
     return (
       <div className="App">
@@ -153,11 +153,16 @@ class App extends Component {
             path="/createpost"
             render={props => <CreatePost addPost={this.addPost} {...props} />}
           />
-          {/* <Route render={() => <Sidebar categorySelect={this.categorySelect} />} /> */}
-          <Route path="/user/:username" render={props => <Profile {...props} />} />
-          <Route path="/showpost/:post_id" 
-            render={
-              props => (<ShowPost deletePost={this.deletePost} {...props}/>)}/>
+          <Route
+            path="/user/:username"
+            render={props => <Profile {...props} />}
+          />
+          <Route
+            path="/showpost/:post_id"
+            render={props => (
+              <ShowPost deletePost={this.deletePost} {...props} />
+            )}
+          />
           <Route path="/editpost/:post_id" component={Post} />
           <Route path="/posts/:post_category" component={Posts} />
 
@@ -168,7 +173,11 @@ class App extends Component {
               <Posts
                 getAllPosts={this.getAllPosts}
                 delete={this.deletePost}
-                posts={this.state.searchList?this.state.searchList:this.state.posts}
+                posts={
+                  this.state.searchList
+                    ? this.state.searchList
+                    : this.state.posts
+                }
                 username={this.state.username}
                 editPost={this.editPost}
                 search={this.search}
