@@ -73,7 +73,6 @@ class Post extends Component {
     let upvotes = {
       upvotes: this.state.post.upvotes + 1
     };
-    // console.log("upvotes: ", upvotes);
     VoteModel.getVoteCount(this.state.post._id, upvotes)
       .then(res => {
         let newCount = res.data.upvotes;
@@ -82,7 +81,6 @@ class Post extends Component {
           upvotes: newCount,
           post: res.data
         });
-        //  console.log("response from clicking on vote counter: res.data = ", res.data)
       })
       .catch(err => console.log(err));
   };

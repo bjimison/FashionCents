@@ -91,8 +91,6 @@ class Navbar extends Component {
   };
 
   render() {
-    // let user_id = this.props.match.params.user_id;
-
     return (
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
