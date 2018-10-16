@@ -12,7 +12,6 @@ class Sidebar extends Component {
       e.style.display = "none";
       right_arrow.style.display = "inline-block";
       left_arrow.style.display = "none";
-      //   search.style.marginLeft = "0";
       posts.style.width = "94%";
       posts.style.marginRight = "3%";
       posts.style.marginLeft = "3%";
@@ -21,7 +20,6 @@ class Sidebar extends Component {
       right_arrow.style.display = "none";
       left_arrow.style.display = "block";
       posts.style.width = "83%";
-      //   search.style.marginLeft = '10%';
     }
   };
 
