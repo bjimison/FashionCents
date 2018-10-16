@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import Post from "./Post";
 import Sidebar from "./Sidebar";
-import { Link } from "react-router-dom";
-import axios from "axios";
-
 
 class Posts extends Component {
   state = {
@@ -26,7 +23,11 @@ class Posts extends Component {
 
     return (
       <div>
-      <Sidebar getAllPosts={this.props.getAllPosts} categorySelect={this.props.categorySelect} posts={this.props.posts} />
+        <Sidebar
+          getAllPosts={this.props.getAllPosts}
+          categorySelect={this.props.categorySelect}
+          posts={this.props.posts}
+        />
         <div>
           <div className="posts">{posts}</div>
         </div>

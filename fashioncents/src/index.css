@@ -157,7 +157,7 @@ body {
 #left-arrow {
   color: gray;
   position: fixed;
-  left: 9%;
+  left: 9.3%;
   top: 51%;
   display: inline-block;
 }
@@ -600,6 +600,10 @@ a {
     height: 1.4rem;
     margin: 0.7rem;
     width: 150px;
+  }
+
+  .edit-form {
+    height: 600px;
   }
 
   .edit-form-text {
