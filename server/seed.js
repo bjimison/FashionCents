@@ -102,7 +102,6 @@ db.Post.remove({}, (err, removedPosts) => {
     if (err) {
       throw err;
     }
-    console.log(newPost);
   });
 });
 
@@ -114,6 +113,5 @@ db.User.remove({}, (err, removedUsers) => {
     if (err) {
       throw err;
     }
-    console.log(newUser);
   });
 });
