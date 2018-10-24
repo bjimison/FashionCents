@@ -137,8 +137,8 @@ class Post extends Component {
               value={this.state.description}
               onChange={this.handleChange}
             />
-            <input id="submit-edit" className="button" type="submit" />
           </div>
+          <input id="submit-edit" className="button" type="submit" />
         </form>
       );
     } else {
